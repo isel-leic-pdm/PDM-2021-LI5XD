@@ -32,7 +32,7 @@ For reference:
   * The Android View hierarchy (overview)
     * Views
     * [Layouts](https://developer.android.com/guide/topics/ui/declaring-layout)
-  * [ConstraintLayout](https://developer.android.com/training/constraint-layout/)
+  * [Constraint Layout](https://developer.android.com/training/constraint-layout/)
 
 For reference:
   * [TilePanel library](assets/Tiles.zip), by [Pedro Pereira](https://www.linkedin.com/in/palexpereira/)
