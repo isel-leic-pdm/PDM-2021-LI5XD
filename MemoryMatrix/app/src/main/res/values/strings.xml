@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MemoryMatrix</string>
+    <string name="startLabel">Start</string>
+</resources>

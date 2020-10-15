@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="TilePanel" >
+    <attr name="widthTiles" format="integer" />
+    <attr name="heightTiles" format="integer" />
+    <attr name="gridLine" format="integer" />
+    <attr name="backgroundTiles" format="color" />
+  </declare-styleable>
+</resources>
+
+<!--
+  Add this attribute in root element:
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+
+  Example:
+    <pt.isel.poo.tile.TilePanel
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:widthTiles="7"
+        app:heightTiles="7"
+        app:gridLine="1"
+        android:id="@+id/panel"
+        />
+  
+-->
