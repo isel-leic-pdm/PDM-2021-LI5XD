@@ -36,4 +36,28 @@ For reference:
 
 For reference:
   * [TilePanel library](assets/Tiles.zip), by [Pedro Pereira](https://www.linkedin.com/in/palexpereira/)
-  * [Lecture video](#15102020---building-android-applications)
+  * [Lecture video]([#15102020---building-android-applications](https://www.youtube.com/watch?v=oFFLaQBo9uM&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=3))
+
+### 19/10/2020 - Building a UI
+* Goal: Build a replica of the [Memory Matrix game](https://www.lumosity.com/en/brain-games/memory-matrix/)
+* Building a UI
+  * Starting by building the model to get acquainted with Koltin: live coding session
+
+For reference:
+  * [Android KTX](https://developer.android.com/kotlin/ktx)
+  * Kotlin constructs
+    * [SAM conversions](https://kotlinlang.org/docs/reference/java-interop.html#sam-conversions)
+    * [Nullable types](https://kotlinlang.org/docs/reference/null-safety.html)
+    * [Data classes](https://kotlinlang.org/docs/reference/data-classes.html)
+    * [Extension functions](https://kotlinlang.org/docs/reference/extensions.html)
+    * [Companion objects](https://kotlinlang.org/docs/reference/object-declarations.html#companion-objects)
+  * [Lecture video](#19102020---building-a-ui)
+
+### 22/10/2020 - Building a UI, continued (_preview_)
+* Goal: Build a replica of the [Memory Matrix game](https://www.lumosity.com/en/brain-games/memory-matrix/)
+* Building a UI
+  * [Custom Views](https://developer.android.com/guide/topics/ui/custom-components)
+  * [Rendering](https://developer.android.com/guide/topics/ui/how-android-draws)
+
+For reference:
+  * [Lecture video](#22102020---building-a-ui-continued-preview)
