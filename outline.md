@@ -51,7 +51,7 @@ For reference:
     * [Data classes](https://kotlinlang.org/docs/reference/data-classes.html)
     * [Extension functions](https://kotlinlang.org/docs/reference/extensions.html)
     * [Companion objects](https://kotlinlang.org/docs/reference/object-declarations.html#companion-objects)
-  * [Lecture video](#19102020---building-a-ui)
+  * [Lecture video]([#19102020---building-a-ui](https://www.youtube.com/watch?v=ETfwr0x8m90&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=4))
 
 ### 22/10/2020 - Building a UI, continued (_preview_)
 * Goal: Build a replica of the [Memory Matrix game](https://www.lumosity.com/en/brain-games/memory-matrix/)
