@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import pt.isel.poo.tile.Tile
 
-const val MARGIN: Float = 20f
+private const val MARGIN: Float = 20f
 
 class PatternElementTile : Tile {
 
@@ -17,7 +17,10 @@ class PatternElementTile : Tile {
 
     override fun draw(canvas: Canvas?, side: Int) {
         canvas?.drawRect(
-            MARGIN, MARGIN, side.toFloat() - MARGIN, side.toFloat() - MARGIN, brush
+            MARGIN, MARGIN,
+            side.toFloat() - MARGIN,
+            side.toFloat() - MARGIN,
+            brush
         )
     }
 

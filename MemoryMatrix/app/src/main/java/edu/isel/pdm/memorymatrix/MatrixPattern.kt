@@ -22,6 +22,7 @@ data class MatrixPattern(private val pattern: List<Position>, val side: Int) : I
 
             return MatrixPattern(generatedPositions, side)
         }
+        fun empty(side: Int) = MatrixPattern(emptyList(), side)
     }
 
     override fun iterator() = pattern.iterator()
