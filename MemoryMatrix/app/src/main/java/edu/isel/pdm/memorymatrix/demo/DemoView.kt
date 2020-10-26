@@ -10,6 +10,12 @@ import android.view.View
 
 class DemoView(ctx: Context, attrs: AttributeSet?) : View(ctx, attrs) {
 
+    var model: DemoModel? = null
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     private val brush: Paint = Paint().apply {
         color = Color.parseColor("#FF0000")
         strokeWidth = 10f
@@ -17,7 +23,13 @@ class DemoView(ctx: Context, attrs: AttributeSet?) : View(ctx, attrs) {
     }
 
     override fun onDraw(canvas: Canvas?) {
-        canvas?.drawLine(0f, 0f, width.toFloat(), height.toFloat(), brush)
+        val localModel = model
+        if (localModel != null) {
+            canvas?.drawLine(
+                localModel.start.x, localModel.start.y,
+                localModel.end.x, localModel.end.y, brush
+            )
+        }
         Log.v("MemoryMatrix", "onDraw on thread ${Thread.currentThread().name}")
     }
 
