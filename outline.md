@@ -61,4 +61,19 @@ For reference:
   * [Rendering](https://developer.android.com/guide/topics/ui/how-android-draws)
 
 For reference:
-  * [Lecture video](#22102020---building-a-ui-continued-preview)
+  * [Lecture video](https://www.youtube.com/watch?v=fp-JUis6peo&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=5)
+
+### 26/10/2020 - Building a UI, continued
+* Goal: Build a replica of the [Memory Matrix game](https://www.lumosity.com/en/brain-games/memory-matrix/)
+* Building a UI, continued
+  * UI Event model
+    * [Handling touch events](https://developer.android.com/training/gestures/movement)
+  * [View Binding](https://developer.android.com/topic/libraries/view-binding)
+* Activity lifecycle, revisited
+  * Activity recreation due to configuration changes
+    * Motivation
+    * Consequences (introduction)
+
+For reference:
+  * [Lecture video](#26102020---building-a-ui-continued)
+
