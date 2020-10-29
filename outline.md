@@ -77,3 +77,16 @@ For reference:
 For reference:
   * [Lecture video](#26102020---building-a-ui-continued)
 
+### 29/10/2020 - Elements of Androd application architecture
+* Activity lifecycle, revisited
+  * Activity recreation due to configuration changes
+    * Motivation and consequences, revisited
+* Considerations on the architecture of Android applications
+  * GUI Design Patterns
+    * _Model - View - Controller_ ([MVC](https://web.archive.org/web/20120729161926/http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html))
+    * _Model - View - ViewModel_ ([MVVM](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/hh848246(v=pandp.10)))
+  * Characterizing state
+    * [UI state](https://developer.android.com/topic/libraries/architecture/saving-states) and application state: introduction
+* Elements of [Android application architecture](https://developer.android.com/jetpack/guide)
+  * The [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+
