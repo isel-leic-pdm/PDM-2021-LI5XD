@@ -9,9 +9,9 @@ fun TilePanel.clear() {
         }
 }
 
-fun drawPattern(matrixView: TilePanel, model: MatrixPattern) {
+fun drawPattern(matrixView: TilePanel, model: MatrixPattern?) {
     matrixView.clear()
-    model.forEach {
+    model?.forEach {
         matrixView.setTile(it.x, it.y, PatternElementTile())
     }
 }

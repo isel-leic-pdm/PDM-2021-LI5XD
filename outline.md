@@ -77,7 +77,7 @@ For reference:
 For reference:
   * [Lecture video](#26102020---building-a-ui-continued)
 
-### 29/10/2020 - Elements of Androd application architecture
+### 02/11/2020 - Elements of Androd application architecture (preview)
 * Activity lifecycle, revisited
   * Activity recreation due to configuration changes
     * Motivation and consequences, revisited

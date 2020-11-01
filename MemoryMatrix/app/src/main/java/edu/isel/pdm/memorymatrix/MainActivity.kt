@@ -22,26 +22,26 @@ private const val PATTERN_SIZE = 8
 
 class MainActivity : AppCompatActivity() {
 
-    private fun startGame(binding: ActivityMainBinding, toGuess: MatrixPattern) {
-        var current = MatrixPattern.empty(binding.matrixView.widthInTiles)
-        drawPattern(binding.matrixView, current)
+    private fun startGame(binding: ActivityMainBinding, viewModel: MatrixViewModel) {
+        viewModel.current = MatrixPattern.empty(binding.matrixView.widthInTiles)
+        drawPattern(binding.matrixView, viewModel.current)
 
         binding.matrixView.setListener(object : OnTileTouchAdapter() {
             override fun onClick(xTile: Int, yTile: Int): Boolean {
-                current += Position(xTile, yTile)
-                drawPattern(binding.matrixView, current)
-                if (current.count == toGuess.count)
-                    endGame(binding, toGuess)
+                viewModel.current = viewModel.current?.plus(Position(xTile, yTile))
+                drawPattern(binding.matrixView, viewModel.current)
+                if (viewModel.current?.count == viewModel.toGuess?.count)
+                    endGame(binding, viewModel)
                 return true
             }
         })
     }
 
-    private fun endGame(binding: ActivityMainBinding, toGuess: MatrixPattern) {
+    private fun endGame(binding: ActivityMainBinding, viewModel: MatrixViewModel) {
         binding.matrixView.setListener(null)
         binding.startButton.postDelayed(5000) {
             binding.startButton.isEnabled = true
-            drawPattern(binding.matrixView, toGuess)
+            drawPattern(binding.matrixView, viewModel.toGuess)
         }
     }
 
@@ -50,16 +50,15 @@ class MainActivity : AppCompatActivity() {
         Log.v("MemoryMatrix", "onCreate() with activity ${this.hashCode()}")
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Log.v("MemoryMatrix", "onCreate() with startButton ${binding.startButton.hashCode()}")
-        Log.v("MemoryMatrix", "onCreate() with matrixView ${binding.matrixView.hashCode()}")
 
+        val viewModel = MatrixViewModel()
         binding.startButton.setOnClickListener {
-            val toGuess = MatrixPattern.fromRandom(PATTERN_SIZE, binding.matrixView.widthInTiles)
-            drawPattern(binding.matrixView, toGuess)
+            viewModel.toGuess = MatrixPattern.fromRandom(PATTERN_SIZE, binding.matrixView.widthInTiles)
+            drawPattern(binding.matrixView, viewModel.toGuess)
             binding.startButton.isEnabled = false
 
-            binding.startButton.postDelayed(10000) {
-                startGame(binding, toGuess)
+            binding.startButton.postDelayed(5000) {
+                startGame(binding, viewModel)
             }
         }
     }
