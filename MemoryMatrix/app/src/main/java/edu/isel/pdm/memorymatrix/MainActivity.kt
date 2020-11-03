@@ -12,6 +12,7 @@ private fun View.postDelayed(delay: Long, action: Runnable) {
 }
 
 private const val PATTERN_SIZE = 8
+private const val GAME_UI_STATE = "MatrixState"
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     private fun drawNotStarted() {
         binding.startButton.isEnabled = true
         binding.startButton.setOnClickListener { drawToGuess() }
-        binding.matrixView.setListener(null)
+        binding.matrixView.unsetTileListener()
     }
 
     /**
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         binding.matrixView.drawPattern(viewModel.current)
         binding.startButton.isEnabled = true
         binding.startButton.setOnClickListener { drawToGuess() }
-        binding.matrixView.setListener(null)
+        binding.matrixView.unsetTileListener()
     }
 
     private val viewModel: MatrixViewModel by viewModels()
@@ -76,6 +77,15 @@ class MainActivity : AppCompatActivity() {
         Log.v("MemoryMatrix", "onCreate() with activity ${this.hashCode()}")
         Log.v("MemoryMatrix", "onCreate() with viewModel ${viewModel.hashCode()}")
 
+        if (savedInstanceState != null) {
+            Log.v("MemoryMatrix", "onCreate() with savedInstanceState not null")
+            val matrixState = savedInstanceState.getParcelable<MatrixState>(GAME_UI_STATE)
+            if (matrixState != null) {
+                Log.v("MemoryMatrix", "onCreate() with matrixState not null")
+                viewModel.fromMatrixState(matrixState)
+            }
+        }
+
         // What should we draw?
         // TODO: Fix for the case where the drawToGuess has already been made
         when {
@@ -83,5 +93,11 @@ class MainActivity : AppCompatActivity() {
             viewModel.isGameOngoing() -> drawGuessing()
             else -> drawNotStarted()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.v("MemoryMatrix", "onSaveInstanceState()")
+        outState.putParcelable(GAME_UI_STATE, viewModel.toMatrixState())
     }
 }

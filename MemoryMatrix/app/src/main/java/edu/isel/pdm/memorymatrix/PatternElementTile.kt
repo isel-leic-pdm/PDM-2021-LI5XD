@@ -7,6 +7,9 @@ import pt.isel.poo.tile.Tile
 
 private const val MARGIN: Float = 20f
 
+/**
+ * Tile implementation used to display memory matrix pattern elements.
+ */
 class PatternElementTile : Tile {
 
     private val brush: Paint = Paint().apply {

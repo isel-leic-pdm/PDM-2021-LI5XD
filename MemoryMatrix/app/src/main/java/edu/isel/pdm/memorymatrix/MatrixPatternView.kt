@@ -15,7 +15,7 @@ private open class OnTileTouchAdapter : OnTileTouchListener {
 
 /**
  * Extension method used to improve (from a Kotlin consumer code's perspective) the [TilePanel]'s
- * public interface.
+ * public interface. It registers the given listener to be called whenever a tile is clicked.
  */
 fun TilePanel.setTileListener(listener: (xTile: Int, yTile: Int) -> Boolean) {
     setListener(object : OnTileTouchAdapter() {
@@ -23,6 +23,13 @@ fun TilePanel.setTileListener(listener: (xTile: Int, yTile: Int) -> Boolean) {
             return listener(xTile, yTile)
         }
     })
+}
+
+/**
+ * Extension method used to remove the current tile listener from the [TilePanel].
+ */
+fun TilePanel.unsetTileListener() {
+    setListener(null)
 }
 
 /**
