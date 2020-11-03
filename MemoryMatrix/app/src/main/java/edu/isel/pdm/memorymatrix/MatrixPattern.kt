@@ -1,7 +1,7 @@
 package edu.isel.pdm.memorymatrix
 
-import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import kotlin.random.Random
 
 /**
@@ -10,29 +10,13 @@ import kotlin.random.Random
  * @property x  the position's horizontal coordinate
  * @property y  the position's vertical coordinate
  */
-data class Position(val x: Int, val y: Int) : Parcelable {
-
-    constructor(parcel: Parcel) : this(
-        parcel.readInt(),
-        parcel.readInt()
-    )
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(x)
-        parcel.writeInt(y)
-    }
-
-    override fun describeContents() = 0
-
-    companion object CREATOR : Parcelable.Creator<Position> {
-        override fun createFromParcel(parcel: Parcel) = Position(parcel)
-        override fun newArray(size: Int) = arrayOfNulls<Position>(size)
-    }
-}
+@Parcelize
+data class Position(val x: Int, val y: Int) : Parcelable
 
 /**
  * Represents bi-dimensional patterns to be memorized. Instances are immutable.
  */
+@Parcelize
 data class MatrixPattern(private val pattern: List<Position>, val side: Int) : Iterable<Position>,
     Parcelable {
 
@@ -53,29 +37,7 @@ data class MatrixPattern(private val pattern: List<Position>, val side: Int) : I
     val count: Int
         get() = pattern.size
 
-    constructor(parcel: Parcel) : this(
-        parcel.createTypedArrayList(Position)?.toList() ?: emptyList(),
-        parcel.readInt()
-    ) {
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeTypedList(pattern)
-        parcel.writeInt(side)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<MatrixPattern> {
-        override fun createFromParcel(parcel: Parcel): MatrixPattern {
-            return MatrixPattern(parcel)
-        }
-
-        override fun newArray(size: Int): Array<MatrixPattern?> {
-            return arrayOfNulls(size)
-        }
+    companion object {
 
         /**
          * Generates a random pattern.

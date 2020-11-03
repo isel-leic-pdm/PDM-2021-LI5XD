@@ -1,33 +1,16 @@
 package edu.isel.pdm.memorymatrix
 
-import android.os.Parcel
 import android.os.Parcelable
 import androidx.lifecycle.ViewModel
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Data class used to represent UI saved state
  */
+@Parcelize
 data class MatrixState(
     val toGuess: MatrixPattern?,
-    val currentGuess: MatrixPattern?) : Parcelable {
-
-    constructor(parcel: Parcel) : this(
-        parcel.readParcelable(MatrixPattern::class.java.classLoader),
-        parcel.readParcelable(MatrixPattern::class.java.classLoader)
-    )
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeParcelable(toGuess, flags)
-        parcel.writeParcelable(currentGuess, flags)
-    }
-
-    override fun describeContents() = 0
-
-    companion object CREATOR : Parcelable.Creator<MatrixState> {
-        override fun createFromParcel(parcel: Parcel) = MatrixState(parcel)
-        override fun newArray(size: Int): Array<MatrixState?> = arrayOfNulls(size)
-    }
-}
+    val currentGuess: MatrixPattern?) : Parcelable
 
 /**
  * View model for the memory game main activity
