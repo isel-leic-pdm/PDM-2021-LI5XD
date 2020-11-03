@@ -75,7 +75,7 @@ For reference:
     * Consequences (introduction)
 
 For reference:
-  * [Lecture video](#26102020---building-a-ui-continued)
+  * [Lecture video](https://www.youtube.com/watch?v=XK_VSVwkFuA&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=6)
 
 ### 02/11/2020 - Presentation state (UI state)
  * Activity lifecycle, revisited
@@ -95,3 +95,18 @@ For reference:
   * [Jetpack lifecycle dependencies](https://developer.android.com/jetpack/androidx/releases/lifecycle#kotlin)
   * [Kotlin Activity extensions](https://developer.android.com/jetpack/androidx/releases/activity)
   * [Lecture video](#02112020---presentation-state-ui-state)
+
+### 05/11/2020 - Presentation state (UI state), continued (preview)
+* Preserving UI state across system initiated process terminations
+  * Activity lifecycle, revisited
+    * `onCreate()`, `onSaveInstanceState()` and `onRestoreInstanceState()`
+  * [`Parcelable` contract](https://developer.android.com/reference/android/os/Parcelable)
+    * Motivation, revisited
+    * Manual implementation 
+    * Implementation with `@Parcelize` [(a Kotlin extension)](https://kotlinlang.org/docs/reference/compiler-plugins.html#parcelable-implementations-generator)
+* [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate)
+
+For reference: 
+  * [Lecture video](#05112020---presentation-state-ui-state-continued-preview)
+  * [ADB documentation](https://developer.android.com/studio/command-line/adb#shellcommands)
+    * [Activity Manager](https://developer.android.com/studio/command-line/adb#am)
