@@ -77,16 +77,21 @@ For reference:
 For reference:
   * [Lecture video](#26102020---building-a-ui-continued)
 
-### 02/11/2020 - Elements of Androd application architecture (preview)
-* Activity lifecycle, revisited
-  * Activity recreation due to configuration changes
-    * Motivation and consequences, revisited
-* Considerations on the architecture of Android applications
-  * GUI Design Patterns
-    * _Model - View - Controller_ ([MVC](https://web.archive.org/web/20120729161926/http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html))
-    * _Model - View - ViewModel_ ([MVVM](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/hh848246(v=pandp.10)))
-  * Characterizing state
-    * [UI state](https://developer.android.com/topic/libraries/architecture/saving-states) and application state: introduction
-* Elements of [Android application architecture](https://developer.android.com/jetpack/guide)
-  * The [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-
+### 02/11/2020 - Presentation state (UI state)
+ * Activity lifecycle, revisited
+   * Activity recreation due to configuration changes
+     * Motivation and consequences, revisited
+ * Characterizing state
+   * [UI state](https://developer.android.com/topic/libraries/architecture/saving-states) and application state: introduction
+ * Considerations on the architecture of Android applications
+   * GUI Design Patterns
+     * _Model - View - Controller_ ([MVC](https://web.archive.org/web/20120729161926/http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html))
+     * _Model - View - ViewModel_ ([MVVM](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/hh848246(v=pandp.10)))
+   * Elements of [Android application architecture](https://developer.android.com/jetpack/guide)
+     * The [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+ 
+For reference:
+  * [Kotlin's delegated properties](https://kotlinlang.org/docs/reference/delegated-properties.html)
+  * [Jetpack lifecycle dependencies](https://developer.android.com/jetpack/androidx/releases/lifecycle#kotlin)
+  * [Kotlin Activity extensions](https://developer.android.com/jetpack/androidx/releases/activity)
+  * [Lecture video](#02112020---presentation-state-ui-state)
