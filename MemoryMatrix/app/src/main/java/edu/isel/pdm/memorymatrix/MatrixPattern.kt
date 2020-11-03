@@ -1,8 +1,35 @@
 package edu.isel.pdm.memorymatrix
 
+import android.os.Parcel
+import android.os.Parcelable
 import kotlin.random.Random
 
-data class Position(val x: Int, val y: Int)
+data class Position(val x: Int, val y: Int) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readInt()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(x)
+        parcel.writeInt(y)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Position> {
+        override fun createFromParcel(parcel: Parcel): Position {
+            return Position(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Position?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
 
 data class MatrixPattern(private val pattern: List<Position>, val side: Int) : Iterable<Position> {
 
@@ -29,4 +56,6 @@ data class MatrixPattern(private val pattern: List<Position>, val side: Int) : I
     operator fun plus(position: Position) = MatrixPattern(pattern + position, side)
     val count: Int
         get() = pattern.size
+
+    fun toList() = pattern.toList()
 }
