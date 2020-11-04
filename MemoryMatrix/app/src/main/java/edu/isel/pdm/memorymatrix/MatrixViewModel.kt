@@ -1,6 +1,7 @@
 package edu.isel.pdm.memorymatrix
 
 import android.os.Parcelable
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import kotlinx.android.parcel.Parcelize
 
@@ -8,25 +9,27 @@ import kotlinx.android.parcel.Parcelize
  * Data class used to represent UI saved state
  */
 @Parcelize
-data class MatrixState(
+private data class MatrixState(
     val toGuess: MatrixPattern?,
     val currentGuess: MatrixPattern?) : Parcelable
+
+private const val SAVED_STATE_KEY = "MatrixViewModel.SavedState"
 
 /**
  * View model for the memory game main activity
  */
-class MatrixViewModel : ViewModel() {
+class MatrixViewModel(private val savedState: SavedStateHandle) : ViewModel() {
 
     /**
      * The pattern to be guessed
      */
-    var toGuess: MatrixPattern? = null
+    var toGuess: MatrixPattern? = savedState.get<MatrixState>(SAVED_STATE_KEY)?.toGuess
         private set
 
     /**
      * The current user guesses
      */
-    var current: MatrixPattern? = null
+    var current: MatrixPattern? = savedState.get<MatrixState>(SAVED_STATE_KEY)?.currentGuess
         private set
 
     /**
@@ -35,6 +38,7 @@ class MatrixViewModel : ViewModel() {
     fun startGame(guessCount: Int, matrixSide: Int): MatrixViewModel {
         toGuess = MatrixPattern.fromRandom(guessCount, matrixSide)
         current = MatrixPattern.empty(matrixSide)
+        savedState[SAVED_STATE_KEY] = MatrixState(toGuess, current)
         return this
     }
 
@@ -48,21 +52,7 @@ class MatrixViewModel : ViewModel() {
      */
     fun addGuess(guess: Position): MatrixViewModel {
         current = current?.plus(guess)
+        savedState[SAVED_STATE_KEY] = MatrixState(toGuess, current)
         return this
-    }
-
-    /**
-     * Creates the [MatrixState] holding the current UI state
-     * @return the UI state to be saved
-     */
-    fun toMatrixState() = MatrixState(toGuess, current)
-
-    /**
-     * Loads the view model state from the given saved UI state
-     * @param savedState    the saved UI state
-     */
-    fun fromMatrixState(savedState: MatrixState) {
-        toGuess = savedState.toGuess
-        current = savedState.currentGuess
     }
 }
