@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
      * time interval.
      */
     private fun drawToGuess() {
-        binding.matrixView.drawPattern(viewModel.game.toGuess)
+        binding.matrixView.drawPattern(viewModel.game.value?.toGuess)
         binding.startButton.isEnabled = false
         binding.startButton.setOnClickListener(null)
     }
@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
      * entries to his current guess.
      */
     private fun drawGuessing() {
-        val userGuess = viewModel.game.currentGuess ?: throw IllegalStateException()
-        val toGuess = viewModel.game.toGuess ?: throw IllegalStateException()
+        val userGuess = viewModel.game.value?.currentGuess ?: throw IllegalStateException()
+        val toGuess = viewModel.game.value?.toGuess ?: throw IllegalStateException()
         binding.matrixView.drawGuessingPattern(userGuess, toGuess)
 
         binding.startButton.isEnabled = false
@@ -54,8 +54,8 @@ class MainActivity : AppCompatActivity() {
      * his guess and the result of his efforts is being displayed.
      */
     private fun drawHasEnded() {
-        val userGuess = viewModel.game.currentGuess ?: throw IllegalStateException()
-        val toGuess = viewModel.game.toGuess ?: throw IllegalStateException()
+        val userGuess = viewModel.game.value?.currentGuess ?: throw IllegalStateException()
+        val toGuess = viewModel.game.value?.toGuess ?: throw IllegalStateException()
         binding.matrixView.drawGuessingPattern(userGuess, toGuess)
 
         binding.startButton.isEnabled = true
@@ -68,23 +68,17 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MatrixViewModel by viewModels()
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
-    /**
-     * Displays the UI according to the current game state
-     */
-    private fun drawUI() {
-        when (viewModel.game.state) {
-            GameState.State.NOT_STARTED -> drawNotStarted()
-            GameState.State.MEMORIZING -> drawToGuess()
-            GameState.State.GUESSING -> drawGuessing()
-            else -> drawHasEnded()
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        drawUI()
-        viewModel.gameListener = { drawUI() }
+        viewModel.game.observe(this) {
+            when (viewModel.game.value?.state) {
+                GameState.State.NOT_STARTED -> drawNotStarted()
+                GameState.State.MEMORIZING -> drawToGuess()
+                GameState.State.GUESSING -> drawGuessing()
+                else -> drawHasEnded()
+            }
+        }
     }
 }

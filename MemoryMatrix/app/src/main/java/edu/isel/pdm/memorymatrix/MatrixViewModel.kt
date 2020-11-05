@@ -3,11 +3,18 @@ package edu.isel.pdm.memorymatrix
 import android.os.Handler
 import android.os.Looper
 import android.os.Parcelable
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import edu.isel.pdm.memorymatrix.GameState.State.*
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * Runs on the UI thread the given action after the specified delay
+ *
+ * @param delay     the number of milliseconds the execution will be delayed
+ * @param action    the action to be executed on the UI thread (the main thread)
+ */
 private fun runDelayed(delay: Long, action: ()-> Unit) {
     Handler(Looper.getMainLooper()).postDelayed({ action() }, delay)
 }
@@ -34,15 +41,9 @@ class MatrixViewModel(private val savedState: SavedStateHandle) : ViewModel() {
     /**
      * The game state.
      */
-    var game: GameState = savedState.get<GameState>(SAVED_STATE_KEY) ?: GameState()
-        private set
-
-    /**
-     * The game state listener.
-     * TODO: This is broken. Fix it!
-     * (A small teaser: what happens if a reconfiguration occurs while the event is being dispatched?)
-     */
-    var gameListener: ((GameState) -> Unit)? = null
+    val game: MutableLiveData<GameState> by lazy {
+        MutableLiveData<GameState>(savedState.get<GameState>(SAVED_STATE_KEY) ?: GameState())
+    }
 
     /**
      * Starts a new guessing game. The game will be in the [GameState.State.MEMORIZING] for the next
@@ -54,19 +55,17 @@ class MatrixViewModel(private val savedState: SavedStateHandle) : ViewModel() {
      * state before moving on to the [GameState.State.GUESSING].
      */
     fun startGame(guessCount: Int, matrixSide: Int, memorizeFor: Int): MatrixViewModel {
-        if (game.state != NOT_STARTED && game.state != ENDED)
+        if (game.value?.state != NOT_STARTED && game.value?.state != ENDED)
             throw IllegalStateException()
 
-        game = GameState(
+        game.value = GameState(
             toGuess = MatrixPattern.fromRandom(guessCount, matrixSide),
             currentGuess = MatrixPattern.empty(matrixSide),
             state = MEMORIZING)
-        gameListener?.invoke(game)
 
         runDelayed(memorizeFor * 1000L) {
-            game = GameState(game.toGuess, game.currentGuess, GUESSING)
-            gameListener?.invoke(game)
-            savedState[SAVED_STATE_KEY] = game
+            game.value = GameState(game.value?.toGuess, game.value?.currentGuess, GUESSING)
+            savedState[SAVED_STATE_KEY] = game.value
         }
         return this
     }
@@ -75,14 +74,13 @@ class MatrixViewModel(private val savedState: SavedStateHandle) : ViewModel() {
      * Adds a new guess to the current set of guesses.
      */
     fun addGuess(guess: Position): MatrixViewModel {
-        if (game.state != GUESSING)
+        if (game.value?.state != GUESSING)
             throw IllegalStateException()
 
-        val toGuess = game.toGuess ?: throw IllegalStateException()
-        val current = game.currentGuess?.plus(guess) ?: throw IllegalStateException()
-        game = GameState(toGuess, current, if (toGuess.count == current.count) ENDED else GUESSING)
-        gameListener?.invoke(game)
-        savedState[SAVED_STATE_KEY] = game
+        val toGuess = game.value?.toGuess ?: throw IllegalStateException()
+        val current = game.value?.currentGuess?.plus(guess) ?: throw IllegalStateException()
+        game.value = GameState(toGuess, current, if (toGuess.count == current.count) ENDED else GUESSING)
+        savedState[SAVED_STATE_KEY] = game.value
         return this
     }
 }
