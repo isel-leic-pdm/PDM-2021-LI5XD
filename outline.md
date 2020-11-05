@@ -94,9 +94,9 @@ For reference:
   * [Kotlin's delegated properties](https://kotlinlang.org/docs/reference/delegated-properties.html)
   * [Jetpack lifecycle dependencies](https://developer.android.com/jetpack/androidx/releases/lifecycle#kotlin)
   * [Kotlin Activity extensions](https://developer.android.com/jetpack/androidx/releases/activity)
-  * [Lecture video](#02112020---presentation-state-ui-state)
+  * [Lecture video](https://www.youtube.com/watch?v=eyDWLOxTaWE&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=7)
 
-### 05/11/2020 - Presentation state (UI state), continued (preview)
+### 05/11/2020 - Presentation state (UI state), continued
 * Preserving UI state across system initiated process terminations
   * Activity lifecycle, revisited
     * `onCreate()`, `onSaveInstanceState()` and `onRestoreInstanceState()`
@@ -104,7 +104,9 @@ For reference:
     * Motivation, revisited
     * Manual implementation 
     * Implementation with `@Parcelize` [(a Kotlin extension)](https://kotlinlang.org/docs/reference/compiler-plugins.html#parcelable-implementations-generator)
-* [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate)
+  * [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate)
+*  Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
+     * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 
 For reference: 
   * [Lecture video](#05112020---presentation-state-ui-state-continued-preview)
