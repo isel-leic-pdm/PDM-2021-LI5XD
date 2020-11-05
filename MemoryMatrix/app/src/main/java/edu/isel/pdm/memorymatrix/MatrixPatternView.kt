@@ -45,7 +45,12 @@ fun TilePanel.clear() {
 /**
  * Extension method to [TilePanel] that draws the given [MatrixPattern].
  */
-fun TilePanel.drawPattern(model: MatrixPattern?) {
+fun TilePanel.drawPattern(toGuess: MatrixPattern?) {
     clear()
-    model?.forEach { setTile(it.x, it.y, PatternElementTile()) }
+    toGuess?.forEach { setTile(it.x, it.y, PatternElementTile()) }
+}
+
+fun TilePanel.drawGuessingPattern(guessing: MatrixPattern, toGuess: MatrixPattern) {
+    clear()
+    guessing.forEach { setTile(it.x, it.y, GuessElementTile(toGuess.contains(Position(it.x, it.y)))) }
 }
