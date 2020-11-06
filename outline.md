@@ -105,10 +105,23 @@ For reference:
     * Manual implementation 
     * Implementation with `@Parcelize` [(a Kotlin extension)](https://kotlinlang.org/docs/reference/compiler-plugins.html#parcelable-implementations-generator)
   * [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate)
-*  Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
-     * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 
 For reference: 
-  * [Lecture video](#05112020---presentation-state-ui-state-continued-preview)
+  * [Lecture video]([#05112020---presentation-state-ui-state-continued-preview](https://www.youtube.com/watch?v=vfoFneVDWdI&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=8))
   * [ADB documentation](https://developer.android.com/studio/command-line/adb#shellcommands)
     * [Activity Manager](https://developer.android.com/studio/command-line/adb#am)
+
+### 09/11/2020 - Practical class
+Practical class dedicated to the development of the first part of the course's project (requirements are [here](assets/PDM-2021-1_Trab1.pdf), in Portuguese)
+
+### 12/11/2020 - Building Android applications, continued (preview)
+  *  Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
+     * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+  * Navigation between activities
+    * [Intents (explicit and implicit) and intent filters](https://developer.android.com/guide/components/intents-filters)
+    * [User tasks and back stack](https://developer.android.com/guide/components/activities/tasks-and-back-stack)
+    * [Activity life cycle, revisited](https://developer.android.com/guide/components/activities/activity-lifecycle)
+      * `onStop()`, `onStart()` and `onRestart()`
+
+For reference: 
+  * [Lecture video](#12112020---building-android-applications-continued-preview)
