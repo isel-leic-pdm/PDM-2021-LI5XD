@@ -1,4 +1,4 @@
-package edu.isel.pdm.memorymatrix
+package edu.isel.pdm.memorymatrix.game
 
 import android.graphics.Canvas
 import android.graphics.Color

@@ -1,4 +1,4 @@
-package edu.isel.pdm.memorymatrix
+package edu.isel.pdm.memorymatrix.game
 
 import pt.isel.poo.tile.OnTileTouchListener
 import pt.isel.poo.tile.TilePanel

@@ -1,4 +1,4 @@
-package edu.isel.pdm.memorymatrix
+package edu.isel.pdm.memorymatrix.game
 
 import android.os.Handler
 import android.os.Looper
@@ -6,7 +6,7 @@ import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import edu.isel.pdm.memorymatrix.GameState.State.*
+import edu.isel.pdm.memorymatrix.game.GameState.State.*
 import kotlinx.android.parcel.Parcelize
 
 /**

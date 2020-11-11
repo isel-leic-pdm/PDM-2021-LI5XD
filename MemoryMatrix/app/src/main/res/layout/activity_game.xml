@@ -5,31 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F1EFEF"
-    tools:context=".MainActivity">
+    tools:context=".game.MainActivity">
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/startLabel"
-        app:layout_constraintBottom_toBottomOf="@+id/matrixView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
-        app:layout_constraintStart_toEndOf="@+id/matrixView"
-        app:layout_constraintTop_toTopOf="@+id/matrixView"
-        app:layout_constraintVertical_bias="0.496" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matrixView" />
 
     <pt.isel.poo.tile.TilePanel
         android:id="@+id/matrixView"
-        android:layout_width="302dp"
-        android:layout_height="313dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="24dp"
         android:background="#FFFFFF"
+        app:gridLine="3"
         app:heightTiles="6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.356"
         app:widthTiles="6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

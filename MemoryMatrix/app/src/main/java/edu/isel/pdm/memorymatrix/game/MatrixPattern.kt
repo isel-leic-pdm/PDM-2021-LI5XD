@@ -1,4 +1,4 @@
-package edu.isel.pdm.memorymatrix
+package edu.isel.pdm.memorymatrix.game
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
