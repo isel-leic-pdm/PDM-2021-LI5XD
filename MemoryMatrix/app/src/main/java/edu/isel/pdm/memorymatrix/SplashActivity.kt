@@ -1,11 +1,23 @@
 package edu.isel.pdm.memorymatrix
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import edu.isel.pdm.memorymatrix.game.GameActivity
+import edu.isel.pdm.memorymatrix.utils.BaseActivity
 
-class SplashActivity : AppCompatActivity() {
+/**
+ * Splash screen displayed when the application starts
+ */
+class SplashActivity : BaseActivity() {
+
+    private val contentView by lazy { findViewById<View>(R.id.root) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        contentView.setOnClickListener {
+            startActivity(Intent(this, GameActivity::class.java))
+        }
     }
 }

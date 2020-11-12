@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">MemoryMatrix</string>
+    <string name="app_name">Memory Matrix</string>
     <string name="startLabel">Start</string>
+    <string name="app_logo_description">Application logo</string>
+    <string name="touch_to_start">Touch to start</string>
+
+
 </resources>

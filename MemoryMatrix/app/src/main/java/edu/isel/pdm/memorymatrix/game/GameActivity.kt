@@ -2,12 +2,15 @@ package edu.isel.pdm.memorymatrix.game
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import edu.isel.pdm.memorymatrix.databinding.ActivityGameBinding
+import edu.isel.pdm.memorymatrix.utils.BaseActivity
 
 private const val PATTERN_SIZE = 8
 
-class MainActivity : AppCompatActivity() {
+/**
+ * The main game screen.
+ */
+class GameActivity : BaseActivity() {
 
     /**
      * Displays the UI associated to the game's ToGuess state, that is, when the user elected to

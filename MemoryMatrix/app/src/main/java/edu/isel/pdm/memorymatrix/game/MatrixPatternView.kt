@@ -1,7 +1,17 @@
 package edu.isel.pdm.memorymatrix.game
 
+import android.content.res.Resources
+import edu.isel.pdm.memorymatrix.R
 import pt.isel.poo.tile.OnTileTouchListener
 import pt.isel.poo.tile.TilePanel
+
+/**
+ * Extension method to hide the following ugly code. Real life code sometimes needs to be ugly...
+ */
+private fun TilePanel.getColorFromId(colorResourceId: Int) =
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        context.getColor(colorResourceId)
+    } else context.resources.getColor(colorResourceId)
 
 /**
  * Helper class used to provide an empty implementation of [OnTileTouchListener].
@@ -47,10 +57,14 @@ fun TilePanel.clear() {
  */
 fun TilePanel.drawPattern(toGuess: MatrixPattern?) {
     clear()
-    toGuess?.forEach { setTile(it.x, it.y, PatternElementTile()) }
+    val color = getColorFromId(R.color.previewPatternColor)
+    toGuess?.forEach { setTile(it.x, it.y, PatternElementTile(color)) }
 }
 
 fun TilePanel.drawGuessingPattern(guessing: MatrixPattern, toGuess: MatrixPattern) {
     clear()
-    guessing.forEach { setTile(it.x, it.y, GuessElementTile(toGuess.contains(Position(it.x, it.y)))) }
+    val color = getColorFromId(R.color.guessPatternColor)
+    guessing.forEach {
+        setTile(it.x, it.y, GuessElementTile(toGuess.contains(Position(it.x, it.y)), color))
+    }
 }
