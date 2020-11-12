@@ -1,23 +1,12 @@
 package edu.isel.pdm.memorymatrix.game
 
-import android.os.Handler
-import android.os.Looper
 import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import edu.isel.pdm.memorymatrix.game.GameState.State.*
+import edu.isel.pdm.memorymatrix.utils.runDelayed
 import kotlinx.android.parcel.Parcelize
-
-/**
- * Runs on the UI thread the given action after the specified delay
- *
- * @param delay     the number of milliseconds the execution will be delayed
- * @param action    the action to be executed on the UI thread (the main thread)
- */
-private fun runDelayed(delay: Long, action: ()-> Unit) {
-    Handler(Looper.getMainLooper()).postDelayed({ action() }, delay)
-}
 
 /**
  * Data class used to represent the game saved state

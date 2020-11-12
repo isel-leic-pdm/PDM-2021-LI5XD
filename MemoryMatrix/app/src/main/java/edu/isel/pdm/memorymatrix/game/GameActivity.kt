@@ -1,7 +1,11 @@
 package edu.isel.pdm.memorymatrix.game
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.activity.viewModels
+import edu.isel.pdm.memorymatrix.AboutActivity
+import edu.isel.pdm.memorymatrix.R
 import edu.isel.pdm.memorymatrix.databinding.ActivityGameBinding
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
 
@@ -83,5 +87,14 @@ class GameActivity : BaseActivity() {
                 else -> drawHasEnded()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_game, menu)
+        menu.findItem(R.id.about).setOnMenuItemClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
+            true
+        }
+        return true
     }
 }

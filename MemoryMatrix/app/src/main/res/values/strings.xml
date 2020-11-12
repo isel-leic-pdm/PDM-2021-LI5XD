@@ -3,6 +3,9 @@
     <string name="startLabel">Start</string>
     <string name="app_logo_description">Application logo</string>
     <string name="touch_to_start">Touch to start</string>
+    <string name="about">About</string>
+    <string name="author_image_description">Paulo Pereira</string>
+    <string name="by">by</string>
 
 
 </resources>

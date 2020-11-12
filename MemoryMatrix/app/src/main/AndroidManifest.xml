@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".game.GameActivity" />
+        <activity android:name=".AboutActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
