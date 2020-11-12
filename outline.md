@@ -114,14 +114,21 @@ For reference:
 ### 09/11/2020 - Practical class
 Practical class dedicated to the development of the first part of the course's project (requirements are [here](assets/PDM-2021-1_Trab1.pdf), in Portuguese)
 
-### 12/11/2020 - Building Android applications, continued (preview)
-  *  Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
-     * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
-  * Navigation between activities
-    * [Intents (explicit and implicit) and intent filters](https://developer.android.com/guide/components/intents-filters)
-    * [User tasks and back stack](https://developer.android.com/guide/components/activities/tasks-and-back-stack)
-    * [Activity life cycle, revisited](https://developer.android.com/guide/components/activities/activity-lifecycle)
-      * `onStop()`, `onStart()` and `onRestart()`
+### 12/11/2020 - Building Android applications, continued
+* Considerations on the design of Android applications, revisited
+* Navigation between activities
+  * [Intents (explicit and implicit) and intent filters](https://developer.android.com/guide/components/intents-filters)
+  * [User tasks and back stack](https://developer.android.com/guide/components/activities/tasks-and-back-stack)
+  * [Activity life cycle, revisited](https://developer.android.com/guide/components/activities/activity-lifecycle)
+    * `onStop()`, `onStart()` and `onRestart()`
+* Android application components
+  * [Application](https://developer.android.com/reference/android/app/Application)
+    * Motivation
+    * Lifecycle
 
 For reference: 
   * [Lecture video](#12112020---building-android-applications-continued-preview)
+  * [Manifest file elements: activity](https://developer.android.com/guide/topics/manifest/activity-element#screen)
+  * [Manifest file elements: application](https://developer.android.com/guide/topics/manifest/application-element)
+  * [Menus](https://developer.android.com/guide/topics/ui/menus)
+  * [Menu resource](https://developer.android.com/guide/topics/resources/menu-resource)
