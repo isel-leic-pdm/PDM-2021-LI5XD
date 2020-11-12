@@ -10,6 +10,7 @@ import edu.isel.pdm.memorymatrix.R
  */
 open class BaseActivity : AppCompatActivity() {
 
+    // Using a resource string merely for demonstration purposes
     private val appTag by lazy { getString(R.string.app_name) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
