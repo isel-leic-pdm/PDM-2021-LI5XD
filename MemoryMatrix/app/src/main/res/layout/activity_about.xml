@@ -2,61 +2,149 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:id="@+id/root">
+    tools:context=".SplashActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="155dp"
         android:layout_height="169dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/app_logo_description"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/labelGameName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126"
         app:srcCompat="@mipmap/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/labelGameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:ellipsize="none"
         android:fontFamily="casual"
         android:text="@string/app_name"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/labelBy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/labelBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ellipsize="none"
         android:fontFamily="casual"
         android:text="@string/by"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/labelAuthorName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/labelGameName" />
 
-    <ImageView
-        android:id="@+id/me"
+    <TextView
+        android:id="@+id/labelAuthorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/author_image_description"
+        android:ellipsize="none"
+        android:fontFamily="casual"
+        android:text="@string/author_name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageAuthor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@mipmap/ic_author" />
+        app:layout_constraintTop_toBottomOf="@+id/labelBy" />
+
+    <ImageView
+        android:id="@+id/imageAuthor"
+        android:layout_width="178dp"
+        android:layout_height="182dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/paulo_pereira"
+        app:layout_constraintBottom_toTopOf="@+id/labelInspiredBy"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelAuthorName"
+        app:srcCompat="@drawable/ic_author" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="92dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/imageAuthor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageAuthor"
+        app:layout_constraintTop_toTopOf="@id/imageAuthor">
+
+        <ImageView
+            android:id="@+id/imageTwitch"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/on_twitch"
+            app:srcCompat="@drawable/ic_twitch" />
+
+        <ImageView
+            android:id="@+id/imageYouTube"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/on_youtube"
+            app:srcCompat="@drawable/ic_youtube" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:contentDescription="@string/on_linkedin"
+            app:srcCompat="@drawable/ic_linkedin" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/labelInspiredBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:ellipsize="none"
+        android:fontFamily="casual"
+        android:text="@string/inspired_by"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageLumosity"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageAuthor" />
+
+    <ImageView
+        android:id="@+id/imageLumosity"
+        android:layout_width="99dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/lumosity"
+        app:layout_constraintBottom_toBottomOf="@+id/labelInspiredBy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelInspiredBy"
+        app:layout_constraintTop_toTopOf="@+id/labelInspiredBy"
+        app:srcCompat="@drawable/ic_lumosity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

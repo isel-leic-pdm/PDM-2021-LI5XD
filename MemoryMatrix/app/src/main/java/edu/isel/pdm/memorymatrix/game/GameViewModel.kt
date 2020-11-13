@@ -5,8 +5,6 @@ import android.os.Parcelable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import edu.isel.pdm.memorymatrix.MemoryMatrixApplication
 import edu.isel.pdm.memorymatrix.game.GameState.State.*
 import edu.isel.pdm.memorymatrix.utils.runDelayed
 import kotlinx.android.parcel.Parcelize

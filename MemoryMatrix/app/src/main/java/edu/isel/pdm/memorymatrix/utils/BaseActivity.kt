@@ -3,15 +3,14 @@ package edu.isel.pdm.memorymatrix.utils
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import edu.isel.pdm.memorymatrix.R
+import edu.isel.pdm.memorymatrix.MemoryMatrixApplication
 
 /**
  * Base class for all the application's activities, used for logging.
  */
 open class BaseActivity : AppCompatActivity() {
 
-    // Using a resource string merely for demonstration purposes
-    private val appTag by lazy { getString(R.string.app_name) }
+    private val appTag by lazy { (application as MemoryMatrixApplication).appTag }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

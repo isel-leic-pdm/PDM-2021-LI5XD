@@ -6,6 +6,11 @@
     <string name="about">About</string>
     <string name="author_image_description">Paulo Pereira</string>
     <string name="by">by</string>
-
-
+    <string name="author_name">Paulo Pereira</string>
+    <string name="inspired_by">Inspired by:</string>
+    <string name="paulo_pereira">Paulo Pereira</string>
+    <string name="on_twitch">On Twitch</string>
+    <string name="on_youtube">on YouTube</string>
+    <string name="on_linkedin">On LinkedIn</string>
+    <string name="lumosity">Lumosity</string>
 </resources>
