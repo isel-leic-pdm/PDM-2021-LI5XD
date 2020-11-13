@@ -132,3 +132,21 @@ For reference:
   * [Manifest file elements: application](https://developer.android.com/guide/topics/manifest/application-element)
   * [Menus](https://developer.android.com/guide/topics/ui/menus)
   * [Menu resource](https://developer.android.com/guide/topics/resources/menu-resource)
+
+
+### 16/11/2020 - Building Android applications, continued (preview)
+* Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
+   * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+     * Motivation and challenges
+* Navigation between activities, continued
+  * [Implicit intents and intent filters](https://developer.android.com/guide/components/intents-filters)
+  * [Common intents](https://developer.android.com/guide/components/intents-common)
+  * [Navigating to a URL via the browser](https://developer.android.com/guide/components/intents-common#Browser)
+
+For reference: 
+  * [Lecture video](#16112020---building-android-applications-continued-preview)
+  * [Package visibility in Android 11](https://developer.android.com/about/versions/11/privacy/package-visibility)
+  * Brand links:
+    * [Twitch](https://brand.twitch.tv/)
+    * [YouTube](https://www.youtube.com/about/brand-resources/#logos-icons-colors)
+    * [LinkedIn](https://brand.linkedin.com/downloads)
