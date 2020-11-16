@@ -127,14 +127,14 @@ Practical class dedicated to the development of the first part of the course's p
     * Lifecycle
 
 For reference: 
-  * [Lecture video](#12112020---building-android-applications-continued-preview)
+  * [Lecture video](https://www.youtube.com/watch?v=wblbeUBol1Q&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=9)
   * [Manifest file elements: activity](https://developer.android.com/guide/topics/manifest/activity-element#screen)
   * [Manifest file elements: application](https://developer.android.com/guide/topics/manifest/application-element)
   * [Menus](https://developer.android.com/guide/topics/ui/menus)
   * [Menu resource](https://developer.android.com/guide/topics/resources/menu-resource)
 
 
-### 16/11/2020 - Building Android applications, continued (preview)
+### 16/11/2020 - Building Android applications, continued
 * Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
    * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
      * Motivation and challenges

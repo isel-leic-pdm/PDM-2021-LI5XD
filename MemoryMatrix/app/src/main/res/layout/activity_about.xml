@@ -110,7 +110,7 @@
             app:srcCompat="@drawable/ic_youtube" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/imageLinkedIn"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:contentDescription="@string/on_linkedin"
