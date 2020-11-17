@@ -10,7 +10,7 @@ import edu.isel.pdm.memorymatrix.game.GameActivity
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
 import edu.isel.pdm.memorymatrix.utils.runDelayed
 
-private class SplashViewModel : ViewModel() {
+class SplashViewModel : ViewModel() {
 
     val scheduleComplete: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>(false)

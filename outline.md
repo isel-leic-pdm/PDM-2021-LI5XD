@@ -107,7 +107,7 @@ For reference:
   * [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate)
 
 For reference: 
-  * [Lecture video]([#05112020---presentation-state-ui-state-continued-preview](https://www.youtube.com/watch?v=vfoFneVDWdI&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=8))
+  * [Lecture video](https://www.youtube.com/watch?v=vfoFneVDWdI&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=8)
   * [ADB documentation](https://developer.android.com/studio/command-line/adb#shellcommands)
     * [Activity Manager](https://developer.android.com/studio/command-line/adb#am)
 
