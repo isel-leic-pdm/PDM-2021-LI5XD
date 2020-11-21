@@ -54,6 +54,7 @@ fun TilePanel.clear() {
 
 /**
  * Extension method to [TilePanel] that draws the given [MatrixPattern].
+ * @param toGuess   the pattern to be guessed.
  */
 fun TilePanel.drawPattern(toGuess: MatrixPattern?) {
     clear()
@@ -61,6 +62,11 @@ fun TilePanel.drawPattern(toGuess: MatrixPattern?) {
     toGuess?.forEach { setTile(it.x, it.y, PatternElementTile(color)) }
 }
 
+/**
+ * Extension method to [TilePanel] that draws both patterns.
+ * @param guessing  the player's current guesses.
+ * @param toGuess   the pattern to be guessed.
+ */
 fun TilePanel.drawGuessingPattern(guessing: MatrixPattern, toGuess: MatrixPattern) {
     clear()
     val color = getColorFromId(R.color.guessPatternColor)

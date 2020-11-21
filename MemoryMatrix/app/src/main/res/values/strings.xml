@@ -13,4 +13,7 @@
     <string name="on_youtube">on YouTube</string>
     <string name="on_linkedin">On LinkedIn</string>
     <string name="lumosity">Lumosity</string>
+    <string name="select_level">Select level</string>
+    <string name="play">Play</string>
+    <string name="highest_level_reached">Highest level reached</string>
 </resources>

@@ -5,6 +5,7 @@ import android.os.Parcelable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import edu.isel.pdm.memorymatrix.MemoryMatrixApplication
 import edu.isel.pdm.memorymatrix.game.GameState.State.*
 import edu.isel.pdm.memorymatrix.utils.runDelayed
 import kotlinx.android.parcel.Parcelize
@@ -21,6 +22,11 @@ data class GameState(
     val state: State = NOT_STARTED) : Parcelable {
 
     enum class State { NOT_STARTED, MEMORIZING, GUESSING, ENDED }
+
+    fun correctResultsCount(): Int? {
+        val correctGuesses = toGuess?.filter { currentGuess?.contains(it) ?: false }?.count()
+        return if (correctGuesses == toGuess?.count) correctGuesses else null
+    }
 }
 
 /**
@@ -30,6 +36,13 @@ class MatrixViewModel(
     application: Application,
     private val savedState: SavedStateHandle
 ) : AndroidViewModel(application) {
+
+    /**
+     * The game repository.
+     */
+    private val gameRepository by lazy {
+        getApplication<MemoryMatrixApplication>().gameRepository
+    }
 
     /**
      * The game state.
@@ -73,6 +86,13 @@ class MatrixViewModel(
         val toGuess = game.value?.toGuess ?: throw IllegalStateException()
         val current = game.value?.currentGuess?.plus(guess) ?: throw IllegalStateException()
         game.value = GameState(toGuess, current, if (toGuess.count == current.count) ENDED else GUESSING)
+
+        if (game.value?.state == ENDED ) {
+            val score = game.value?.correctResultsCount()
+            if (score != null && score > gameRepository.highestLevel)
+                gameRepository.highestLevel = score
+        }
+
         savedState[SAVED_STATE_KEY] = game.value
         return this
     }

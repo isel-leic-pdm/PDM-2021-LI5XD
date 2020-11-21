@@ -6,7 +6,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import edu.isel.pdm.memorymatrix.game.GameActivity
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
 import edu.isel.pdm.memorymatrix.utils.runDelayed
 
@@ -36,8 +35,8 @@ class SplashActivity : BaseActivity() {
     private val contentView by lazy { findViewById<View>(R.id.root) }
     private val viewModel: SplashViewModel by viewModels()
 
-    private fun navigateToGameActivity() {
-        startActivity(Intent(this, GameActivity::class.java))
+    private fun navigateToLevelSelectionActivity() {
+        startActivity(Intent(this, LevelActivity::class.java))
         finish()
     }
 
@@ -46,12 +45,12 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
 
         contentView.setOnClickListener {
-            navigateToGameActivity()
+            navigateToLevelSelectionActivity()
         }
 
         viewModel.scheduleComplete.observe(this) { shouldNavigate ->
             if (shouldNavigate) {
-                navigateToGameActivity()
+                navigateToLevelSelectionActivity()
             }
         }
 

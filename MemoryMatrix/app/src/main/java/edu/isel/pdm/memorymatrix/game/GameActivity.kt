@@ -9,12 +9,17 @@ import edu.isel.pdm.memorymatrix.R
 import edu.isel.pdm.memorymatrix.databinding.ActivityGameBinding
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
 
-private const val PATTERN_SIZE = 8
+const val PATTERN_SIZE_EXTRA = "PatternSizeExtra"
+private const val DEFAULT_PATTERN_SIZE = 8
 
 /**
  * The main game screen.
  */
 class GameActivity : BaseActivity() {
+
+    private val patternSize: Int by lazy {
+        intent.getIntExtra(PATTERN_SIZE_EXTRA, DEFAULT_PATTERN_SIZE)
+    }
 
     /**
      * Displays the UI associated to the game's ToGuess state, that is, when the user elected to
@@ -52,7 +57,7 @@ class GameActivity : BaseActivity() {
         binding.startButton.isEnabled = true
         binding.matrixView.unsetTileListener()
         binding.startButton.setOnClickListener {
-            viewModel.startGame(PATTERN_SIZE, binding.matrixView.widthInTiles, 5)
+            viewModel.startGame(patternSize, binding.matrixView.widthInTiles, 5)
         }
     }
 
@@ -67,7 +72,7 @@ class GameActivity : BaseActivity() {
 
         binding.startButton.isEnabled = true
         binding.startButton.setOnClickListener {
-            viewModel.startGame(PATTERN_SIZE, binding.matrixView.widthInTiles, 5)
+            viewModel.startGame(patternSize, binding.matrixView.widthInTiles, 5)
         }
         binding.matrixView.unsetTileListener()
     }
@@ -91,7 +96,7 @@ class GameActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_game, menu)
-        menu.findItem(R.id.about).setOnMenuItemClickListener {
+        menu.findItem(R.id.history).setOnMenuItemClickListener {
             startActivity(Intent(this, AboutActivity::class.java))
             true
         }
