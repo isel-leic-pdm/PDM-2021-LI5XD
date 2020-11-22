@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
 import edu.isel.pdm.memorymatrix.databinding.ActivityLevelBinding
 import edu.isel.pdm.memorymatrix.game.GameActivity
 import edu.isel.pdm.memorymatrix.game.PATTERN_SIZE_EXTRA
+import edu.isel.pdm.memorymatrix.utils.BaseActivity
 import kotlin.math.max
 
 
@@ -24,7 +24,7 @@ private fun SeekBar.setChangeListener(listener: (progress: Int) -> Unit) {
 /**
  * Screen used for level selection.
  */
-class LevelActivity : AppCompatActivity() {
+class LevelActivity : BaseActivity() {
 
     private val binding: ActivityLevelBinding by lazy { ActivityLevelBinding.inflate(layoutInflater) }
     private val minLevel by lazy { resources.getInteger(R.integer.min_level) }
@@ -56,6 +56,7 @@ class LevelActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_level, menu)
         menu.findItem(R.id.history).setOnMenuItemClickListener {
+            // TODO: navigate to history activity
             true
         }
         return true

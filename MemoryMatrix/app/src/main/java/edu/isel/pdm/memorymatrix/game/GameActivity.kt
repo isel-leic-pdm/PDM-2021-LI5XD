@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import edu.isel.pdm.memorymatrix.AboutActivity
 import edu.isel.pdm.memorymatrix.R
 import edu.isel.pdm.memorymatrix.databinding.ActivityGameBinding
+import edu.isel.pdm.memorymatrix.game.data.Position
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
 
 const val PATTERN_SIZE_EXTRA = "PatternSizeExtra"

@@ -1,7 +1,8 @@
 package edu.isel.pdm.memorymatrix.game
 
-import android.content.res.Resources
 import edu.isel.pdm.memorymatrix.R
+import edu.isel.pdm.memorymatrix.game.data.MatrixPattern
+import edu.isel.pdm.memorymatrix.game.data.Position
 import pt.isel.poo.tile.OnTileTouchListener
 import pt.isel.poo.tile.TilePanel
 
