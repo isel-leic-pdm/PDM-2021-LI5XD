@@ -28,7 +28,7 @@ class LevelActivity : BaseActivity() {
 
     private val binding: ActivityLevelBinding by lazy { ActivityLevelBinding.inflate(layoutInflater) }
     private val minLevel by lazy { resources.getInteger(R.integer.min_level) }
-    private val gameRepository by lazy { (application as MemoryMatrixApplication).gameRepository }
+    private val gameRepository by lazy { memoryMatrixApp.gameRepository }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,6 +10,7 @@ import edu.isel.pdm.memorymatrix.MemoryMatrixApplication
  */
 open class BaseActivity : AppCompatActivity() {
 
+    protected val memoryMatrixApp by lazy { application as MemoryMatrixApplication }
     private val appTag by lazy { (application as MemoryMatrixApplication).appTag }
 
     override fun onCreate(savedInstanceState: Bundle?) {

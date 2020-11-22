@@ -133,7 +133,6 @@ For reference:
   * [Menus](https://developer.android.com/guide/topics/ui/menus)
   * [Menu resource](https://developer.android.com/guide/topics/resources/menu-resource)
 
-
 ### 16/11/2020 - Building Android applications, continued
 * Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
    * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
@@ -144,9 +143,31 @@ For reference:
   * [Navigating to a URL via the browser](https://developer.android.com/guide/components/intents-common#Browser)
 
 For reference: 
-  * [Lecture video](#16112020---building-android-applications-continued-preview)
+  * [Lecture video](https://www.youtube.com/watch?v=AGvnYpUhelk&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=10)
   * [Package visibility in Android 11](https://developer.android.com/about/versions/11/privacy/package-visibility)
   * Brand links:
     * [Twitch](https://brand.twitch.tv/)
     * [YouTube](https://www.youtube.com/about/brand-resources/#logos-icons-colors)
     * [LinkedIn](https://brand.linkedin.com/downloads)
+
+### 19/11/2020 - Practical class
+Practical class dedicated to the development of the first part of the course's project (requirements are [here](assets/PDM-2021-1_Trab1.pdf), in Portuguese)
+
+### 23/11/2020 - Building Android applications, continued
+* Persisting application state
+  * In a key-value store
+    * [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences)
+  * In a relational DB with [Room](https://developer.android.com/training/data-storage/room#kotlin)
+    * Architectural elements: [Entities](https://developer.android.com/training/data-storage/room/defining-data), [DAOs](https://developer.android.com/training/data-storage/room/accessing-data) and Database
+* [Android threading model](https://developer.android.com/guide/components/processes-and-threads)
+  * Thread safety through thread confinement
+    * Motivation and consequences
+  * Scheduling work (e.g. I/O) to alternative threads
+    * Executors
+    * [Asynctask (deprecated in Android 11)](https://developer.android.com/reference/android/os/AsyncTask.html)
+  * LiveData as a means to signal asynchronous operations completion
+
+For reference:
+* [Lecture video](#23112020---building-android-applications-continued)
+* [Saving data using SQLite](https://developer.android.com/training/data-storage/sqlite)
+* Coming soon: [DataStore](https://developer.android.com/topic/libraries/architecture/datastore#typed-datastore)

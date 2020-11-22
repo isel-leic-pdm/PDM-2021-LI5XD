@@ -90,9 +90,7 @@ class MatrixViewModel(
         game.value = GameState(toGuess, current, if (toGuess.count == current.count) ENDED else GUESSING)
 
         if (game.value?.state == ENDED ) {
-            val score = game.value?.correctResultsCount()
-            if (score != null && score > gameRepository.highestLevel)
-                gameRepository.highestLevel = score
+            gameRepository.saveResult(toGuess, current, game.value?.correctResultsCount() ?: 0)
         }
 
         savedState[SAVED_STATE_KEY] = game.value
