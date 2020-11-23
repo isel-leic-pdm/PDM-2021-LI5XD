@@ -47,7 +47,7 @@
         android:layout_marginTop="16dp"
         android:contentDescription="@string/select_level"
         android:max="@integer/max_level"
-        android:progress="@integer/max_level"
+        android:progress="@integer/min_level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

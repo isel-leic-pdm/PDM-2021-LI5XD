@@ -1,5 +1,6 @@
 package edu.isel.pdm.memorymatrix.game.history
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -15,7 +16,7 @@ interface GameResultDao {
     fun loadAllGames(): List<GameResult>
 
     @Query("SELECT * FROM games ORDER BY date DESC LIMIT :count")
-    fun loadLastGames(count: Int): List<GameResult>
+    fun loadLastGames(count: Int): LiveData<List<GameResult>>
 
     @Insert
     fun insertGame(game: GameResult)

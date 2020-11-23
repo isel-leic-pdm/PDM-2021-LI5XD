@@ -2,6 +2,7 @@ package edu.isel.pdm.memorymatrix
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.widget.SeekBar
 import edu.isel.pdm.memorymatrix.databinding.ActivityLevelBinding
@@ -51,12 +52,19 @@ class LevelActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
         binding.record.text = gameRepository.highestLevel.toString()
+        Log.v(memoryMatrixApp.appTag, "progress is ${binding.levelSelectionBar.progress}")
+        binding.levelSelection.text = binding.levelSelectionBar.progress.toString()
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_level, menu)
         menu.findItem(R.id.history).setOnMenuItemClickListener {
-            // TODO: navigate to history activity
+            gameRepository.getAllScores().observe(this) {
+                // TODO: Populate the UI
+                Log.v(memoryMatrixApp.appTag, "Populating the UI in thread ${Thread.currentThread().name}")
+            }
             true
         }
         return true
