@@ -49,14 +49,11 @@ class LevelActivity : BaseActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         binding.record.text = gameRepository.highestLevel.toString()
-        Log.v(memoryMatrixApp.appTag, "progress is ${binding.levelSelectionBar.progress}")
         binding.levelSelection.text = binding.levelSelectionBar.progress.toString()
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_level, menu)
