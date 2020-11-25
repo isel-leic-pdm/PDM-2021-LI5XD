@@ -9,6 +9,7 @@ import edu.isel.pdm.memorymatrix.R
 import edu.isel.pdm.memorymatrix.databinding.ActivityGameBinding
 import edu.isel.pdm.memorymatrix.game.data.Position
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
+import edu.isel.pdm.memorymatrix.utils.confinedLazy
 
 const val PATTERN_SIZE_EXTRA = "PatternSizeExtra"
 private const val DEFAULT_PATTERN_SIZE = 8
@@ -18,7 +19,7 @@ private const val DEFAULT_PATTERN_SIZE = 8
  */
 class GameActivity : BaseActivity() {
 
-    private val patternSize: Int by lazy {
+    private val patternSize: Int by confinedLazy {
         intent.getIntExtra(PATTERN_SIZE_EXTRA, DEFAULT_PATTERN_SIZE)
     }
 
@@ -79,7 +80,9 @@ class GameActivity : BaseActivity() {
     }
 
     private val viewModel: MatrixViewModel by viewModels()
-    private val binding: ActivityGameBinding by lazy { ActivityGameBinding.inflate(layoutInflater) }
+    private val binding: ActivityGameBinding by confinedLazy {
+        ActivityGameBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,7 +100,7 @@ class GameActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_game, menu)
-        menu.findItem(R.id.history).setOnMenuItemClickListener {
+        menu.findItem(R.id.historyList).setOnMenuItemClickListener {
             startActivity(Intent(this, AboutActivity::class.java))
             true
         }

@@ -12,3 +12,12 @@ import android.os.Looper
 fun runDelayed(millis: Long, action: () -> Unit) {
     Handler(Looper.getMainLooper()).postDelayed(action, millis)
 }
+
+/**
+ * Version of [lazy] that defaults to a non-thread safe implementation to be used when
+ * the lazy use is confined to a single thread
+ *
+ * @param initializer   The function used to initialize the underlying instance
+ * @return the lazy instance data holder
+ */
+fun <T> confinedLazy(initializer: () -> T): Lazy<T> = lazy(LazyThreadSafetyMode.NONE, initializer)

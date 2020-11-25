@@ -9,6 +9,7 @@ import edu.isel.pdm.memorymatrix.MemoryMatrixApplication
 import edu.isel.pdm.memorymatrix.game.GameState.State.*
 import edu.isel.pdm.memorymatrix.game.data.MatrixPattern
 import edu.isel.pdm.memorymatrix.game.data.Position
+import edu.isel.pdm.memorymatrix.utils.confinedLazy
 import edu.isel.pdm.memorymatrix.utils.runDelayed
 import kotlinx.android.parcel.Parcelize
 
@@ -42,14 +43,14 @@ class MatrixViewModel(
     /**
      * The game repository.
      */
-    private val gameRepository by lazy {
+    private val gameRepository by confinedLazy {
         getApplication<MemoryMatrixApplication>().gameRepository
     }
 
     /**
      * The game state.
      */
-    val game: MutableLiveData<GameState> by lazy {
+    val game: MutableLiveData<GameState> by confinedLazy {
         MutableLiveData<GameState>(savedState.get<GameState>(SAVED_STATE_KEY) ?: GameState())
     }
 

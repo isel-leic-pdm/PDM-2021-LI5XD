@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
+import edu.isel.pdm.memorymatrix.utils.confinedLazy
 import edu.isel.pdm.memorymatrix.utils.runDelayed
 
 class SplashViewModel : ViewModel() {
@@ -32,7 +33,7 @@ class SplashViewModel : ViewModel() {
  */
 class SplashActivity : BaseActivity() {
 
-    private val contentView by lazy { findViewById<View>(R.id.root) }
+    private val contentView by confinedLazy { findViewById<View>(R.id.root) }
     private val viewModel: SplashViewModel by viewModels()
 
     private fun navigateToLevelSelectionActivity() {

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import edu.isel.pdm.memorymatrix.databinding.ActivityAboutBinding
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
+import edu.isel.pdm.memorymatrix.utils.confinedLazy
 import edu.isel.pdm.memorymatrix.utils.runDelayed
 
 private const val LUMOSITY_URL = "https://www.lumosity.com/"
@@ -32,7 +33,7 @@ class AboutActivity : BaseActivity() {
         }
     }
 
-    private val binding by lazy { ActivityAboutBinding.inflate(layoutInflater) }
+    private val binding by confinedLazy { ActivityAboutBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -16,4 +16,5 @@
     <string name="select_level">Select level</string>
     <string name="play">Play</string>
     <string name="highest_level_reached">Highest level reached</string>
+    <string name="history_item_score">Score = %1$s</string>
 </resources>

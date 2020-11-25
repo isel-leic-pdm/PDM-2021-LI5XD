@@ -39,8 +39,10 @@ class Converters {
 
     @TypeConverter
     fun patternFromString(stringPattern: String): List<Position> =
-        stringPattern.split(';').map {
-            val pair = it.split(',')
-            Position(pair[0].toInt(), pair[1].toInt())
-        }
+        stringPattern.split(';')
+            .filter { it.isNotBlank() }
+            .map {
+                val pair = it.split(',')
+                Position(pair[0].toInt(), pair[1].toInt())
+            }
 }

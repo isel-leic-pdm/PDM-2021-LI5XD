@@ -2,7 +2,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/history"
+        android:id="@+id/historyList"
         android:icon="@android:drawable/ic_menu_recent_history"
         android:title="@string/about"
         app:showAsAction="always" />
