@@ -1,11 +1,9 @@
-package edu.isel.pdm.memorymatrix
+package edu.isel.pdm.memorymatrix.game.data
 
 import android.content.SharedPreferences
-import android.os.AsyncTask
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import edu.isel.pdm.memorymatrix.game.data.MatrixPattern
 import edu.isel.pdm.memorymatrix.game.history.GameResult
 import edu.isel.pdm.memorymatrix.game.history.HistoryDatabase
 import java.util.*

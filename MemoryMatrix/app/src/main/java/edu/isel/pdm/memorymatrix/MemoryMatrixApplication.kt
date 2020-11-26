@@ -3,6 +3,7 @@ package edu.isel.pdm.memorymatrix
 import android.app.Application
 import android.util.Log
 import androidx.room.Room
+import edu.isel.pdm.memorymatrix.game.data.GameRepository
 import edu.isel.pdm.memorymatrix.game.history.HistoryDatabase
 
 private const val GLOBAL_PREFS = "GlobalPreferences"
@@ -18,7 +19,8 @@ class MemoryMatrixApplication : Application() {
     val gameRepository by lazy {
         GameRepository(
             getSharedPreferences(GLOBAL_PREFS, MODE_PRIVATE),
-            Room.inMemoryDatabaseBuilder(this, HistoryDatabase::class.java).build()
+            // Room.inMemoryDatabaseBuilder(this, HistoryDatabase::class.java).build()
+            Room.databaseBuilder(this, HistoryDatabase::class.java, "HistoryDB").build()
         )
     }
 

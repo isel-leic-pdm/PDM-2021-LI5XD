@@ -16,6 +16,10 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
      *
      * Implementation note: This eager approach (getting all the results) is only acceptable for
      * demonstration purposes.
+     *
+     * Implementation note: BE MINDFUL THAT for a given instance of the view model, results are only
+     * fetched once from the DB. This approach serves us well in our current user task configuration,
+     * but it may be cumbersome in other user experiences.
      */
     val results: LiveData<List<GameResult>> by confinedLazy {
         getApplication<MemoryMatrixApplication>().gameRepository.getAllScores()

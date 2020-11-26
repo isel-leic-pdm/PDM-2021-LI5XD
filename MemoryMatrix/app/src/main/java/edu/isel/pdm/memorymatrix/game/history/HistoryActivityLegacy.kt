@@ -13,15 +13,14 @@ import androidx.activity.viewModels
 import edu.isel.pdm.memorymatrix.MemoryMatrixApplication
 import edu.isel.pdm.memorymatrix.R
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
-import edu.isel.pdm.memorymatrix.utils.confinedLazy
 
 /**
  * Adapter used to fill the list view items with the information from the data source.
  */
-class HistoryAdapter(ctx: Context, history: Array<GameResult>) :
-    ArrayAdapter<GameResult>(ctx, android.R.layout.simple_list_item_2, history) {
+class HistoryAdapterLegacy(ctx: Context, history: List<GameResult>) :
+    ArrayAdapter<GameResult>(ctx, android.R.layout.simple_list_item_2, history.toTypedArray()) {
 
-    private val application by confinedLazy { context.applicationContext as MemoryMatrixApplication }
+    private val application = context.applicationContext as MemoryMatrixApplication
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
@@ -31,6 +30,9 @@ class HistoryAdapter(ctx: Context, history: Array<GameResult>) :
 
         val gameResult = getItem(position) ?: throw IllegalStateException()
 
+        // Implementation note: calling findViewById for each call to getView is not the best solution
+        // TODO: Implement ViewHolder pattern
+        // TODO: Reduce the number of calls to getString
         itemView.findViewById<TextView>(android.R.id.text1).text =
             context.resources.getString(R.string.history_item_score, gameResult.score.toString())
         itemView.findViewById<TextView>(android.R.id.text2).text = gameResult.date.toString()
@@ -42,17 +44,17 @@ class HistoryAdapter(ctx: Context, history: Array<GameResult>) :
 /**
  * Screen used to display the game scores' history using a List View.
  */
-class HistoryActivityDemo : BaseActivity() {
+class HistoryActivityLegacy : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_history_demo)
+        setContentView(R.layout.activity_history_legacy)
 
         val history = findViewById<ListView>(R.id.historyList)
         val viewModel: HistoryViewModel by viewModels()
 
         viewModel.results.observe(this) {
-            history.adapter = HistoryAdapter(this, it.toTypedArray())
+            history.adapter = HistoryAdapterLegacy(this, it)
         }
     }
 }

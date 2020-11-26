@@ -7,7 +7,8 @@ import android.widget.SeekBar
 import edu.isel.pdm.memorymatrix.databinding.ActivityLevelBinding
 import edu.isel.pdm.memorymatrix.game.GameActivity
 import edu.isel.pdm.memorymatrix.game.PATTERN_SIZE_EXTRA
-import edu.isel.pdm.memorymatrix.game.history.HistoryActivityDemo
+import edu.isel.pdm.memorymatrix.game.history.HistoryActivity
+import edu.isel.pdm.memorymatrix.game.history.HistoryActivityLegacy
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
 import edu.isel.pdm.memorymatrix.utils.confinedLazy
 import kotlin.math.max
@@ -58,9 +59,12 @@ class LevelActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_level, menu)
+        menu.findItem(R.id.historyListLegacy).setOnMenuItemClickListener {
+            startActivity(Intent(this, HistoryActivityLegacy::class.java))
+            true
+        }
         menu.findItem(R.id.historyList).setOnMenuItemClickListener {
-            startActivity(Intent(this, HistoryActivityDemo::class.java))
-            //startActivity(Intent(this, HistoryActivity::class.java))
+            startActivity(Intent(this, HistoryActivity::class.java))
             true
         }
         return true
