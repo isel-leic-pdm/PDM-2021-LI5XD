@@ -1,7 +1,9 @@
 package edu.isel.pdm.memorymatrix.game.history
 
+import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +11,14 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.isel.pdm.memorymatrix.MemoryMatrixApplication
 import edu.isel.pdm.memorymatrix.R
 import edu.isel.pdm.memorymatrix.utils.BaseActivity
 
 /**
  * The recyclerview´s view holder
  */
-class ItemViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val topText: TextView = itemView.findViewById(R.id.historyItemTopText)
     val bottomText: TextView = itemView.findViewById(R.id.historyItemBottomText)
 }
@@ -24,22 +27,25 @@ class ItemViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemV
  * The recyclerview´s adapter
  */
 class HistoryAdapter(
-        resources: Resources,
+        private val ctx: Context,
         private val history: List<GameResult>
     ) : RecyclerView.Adapter<ItemViewHolder>() {
 
-    private val topFormatString = resources.getString(R.string.history_item_score)
-    private val bottomFormatString = resources.getString(R.string.history_item_score)
+    private val topFormatString = ctx.resources.getString(R.string.history_item_score)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        Log.v((ctx.applicationContext as MemoryMatrixApplication).appTag,
+            "onCreateViewHolder")
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_layout, parent, false)
         return ItemViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        Log.v((ctx.applicationContext as MemoryMatrixApplication).appTag,
+            "position = $position of $itemCount")
         holder.topText.text = String.format(topFormatString, history[position].score.toString())
-        holder.bottomText.text = String.format(bottomFormatString, history[position].date.toString())
+        holder.bottomText.text = history[position].date.toString()
     }
 
     override fun getItemCount() = history.size
@@ -61,7 +67,7 @@ class HistoryActivity : BaseActivity() {
         val viewModel: HistoryViewModel by viewModels()
 
         viewModel.results.observe(this) {
-            history.adapter = HistoryAdapter(resources, it)
+            history.adapter = HistoryAdapter(this, it)
         }
     }
 }
