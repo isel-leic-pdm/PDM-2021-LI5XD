@@ -168,7 +168,7 @@ Practical class dedicated to the development of the first part of the course's p
   * LiveData as a means to signal asynchronous operations completion
 
 For reference:
-* [Lecture video](#23112020---building-android-applications-continued)
+* [Lecture video](https://www.youtube.com/watch?v=5Kp3KahrhIo&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=11)
 * [Saving data using SQLite](https://developer.android.com/training/data-storage/sqlite)
 * Coming soon: [DataStore](https://developer.android.com/topic/libraries/architecture/datastore#typed-datastore)
 
@@ -181,7 +181,7 @@ For reference:
   * [Using Recycler View](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 
 For reference:
-* [Lecture video](#26102020---building-a-ui-continued)
+* [Lecture video](https://www.youtube.com/watch?v=XkIZXpsvUtM&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=12)
 
 ### 03/12/2020 - Networking (with Volley)
 * Accessing the communications network
