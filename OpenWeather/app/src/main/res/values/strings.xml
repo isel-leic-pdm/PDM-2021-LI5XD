@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Open Weather</string>
+    <string name="edit_hint">City name</string>
+    <string name="fetch_button">Get Info</string>
+    <string name="empty_city_toast">Enter a city name</string>
+    <string name="error_msg_couldntget">Error getting weather info</string>
+
+    <string name="label_today">Today</string>
+    <string name="label_max_temp">Max</string>
+    <string name="label_min_temp">Min</string>
+    <string name="label_wind">Wind</string>
+    <string name="text_default_temp">- - ºC</string>
+    <string name="text_temp_units">ºC</string>
+    <string name="text_default_humidity" translatable="false">--%</string>
+    <string name="text_humidity_units" translatable="false">%</string>
+    <string name="text_default_wind" translatable="false">- - -</string>
+</resources>

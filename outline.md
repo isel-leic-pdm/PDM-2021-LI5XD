@@ -171,3 +171,30 @@ For reference:
 * [Lecture video](#23112020---building-android-applications-continued)
 * [Saving data using SQLite](https://developer.android.com/training/data-storage/sqlite)
 * Coming soon: [DataStore](https://developer.android.com/topic/libraries/architecture/datastore#typed-datastore)
+
+### 26/11/2020 - Building the UI, continued
+* Displaying lists of items
+  * Adapting data to views (Adapter pattern)
+  * Using ListView
+    * View Holder pattern 
+    * View recycling
+  * [Using Recycler View](https://developer.android.com/guide/topics/ui/layout/recyclerview)
+
+For reference:
+* [Lecture video](#26102020---building-a-ui-continued)
+
+### 03/12/2020 - Networking (with Volley)
+* Accessing the communications network
+  * [Required permissions](https://developer.android.com/training/basics/network-ops/connecting)
+* [HTTP communication with Volley](https://developer.android.com/training/volley)
+* Serialization and deserialization with Jackson
+* Further considerations regarding Android application architecture
+  * [Android application architecture](https://developer.android.com/jetpack/guide), revisited
+
+For reference:
+* [Lecture video](#03122020---networking-with-volley)
+
+### 11/12/2020 - Networking, continued (preview)
+* [HTTP communication with Retrofit](https://square.github.io/retrofit/)
+* Further considerations regarding Android application architecture
+  * [Android application architecture](https://developer.android.com/jetpack/guide), revisited
