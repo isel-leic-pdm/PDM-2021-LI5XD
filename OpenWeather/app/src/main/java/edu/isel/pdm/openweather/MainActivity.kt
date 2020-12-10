@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToWeatherActivity() {
         viewModel.setToIdle()
         startActivity(Intent(this, WeatherActivity::class.java).apply {
-            val info = viewModel.weatherInfo?.value?.getOrNull() ?: throw IllegalStateException()
+            val info = viewModel.weatherInfo.value?.getOrNull() ?: throw IllegalStateException()
             putExtra(WEATHER_EXTRA_KEY, info)
         })
     }
