@@ -1,6 +1,8 @@
 package edu.isel.pdm.openweather
 
 import android.app.Application
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -8,6 +10,20 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import edu.isel.pdm.openweather.repo.WeatherInfo
 import java.lang.Thread.currentThread
+import java.util.concurrent.Executors
+
+/**
+ * For demo purposes
+ */
+fun doAHugeAmountOfWork(result: Result<WeatherInfo>?, completion: (Result<WeatherInfo>?) -> Unit) {
+
+    val mainHandler = Handler(Looper.getMainLooper())
+    Executors.newSingleThreadExecutor().execute {
+        Log.v("Open", "working hard on ${currentThread().name}")
+        Thread.sleep(5000)
+        mainHandler.post { completion(result) }
+    }
+}
 
 /**
  * View model for the [MainActivity]
@@ -58,8 +74,11 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         mediator.addSource(source) {
             Log.v(app.appTag, "MainActivityViewModel.fetchWeatherInfo completion on ${currentThread().name}")
             state.value = State.COMPLETE
-            weatherInfo.value = it
-            mediator.removeSource(source)
+
+            doAHugeAmountOfWork(it) { finalResult ->
+                weatherInfo.value = finalResult
+                mediator.removeSource(source)
+            }
         }
         return weatherInfo
     }

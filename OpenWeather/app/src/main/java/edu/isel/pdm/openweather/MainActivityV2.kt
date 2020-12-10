@@ -32,7 +32,7 @@ class MainActivityV2ViewModel(application: Application) : AndroidViewModel(appli
             (state as MutableLiveData<State>).value = State.IN_PROGRESS
             getApplication<OpenWeatherApplication>().repository.fetchWeatherInfo(it)
         }
-        else throw throw IllegalStateException()
+        else throw IllegalStateException()
     }
 
     /**
