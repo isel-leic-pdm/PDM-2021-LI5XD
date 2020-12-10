@@ -8,6 +8,9 @@ import edu.isel.pdm.openweather.repo.WeatherInfo
 
 /**
  * View model for the [MainActivity]
+ *
+ * Design note: Notice the broken up asynchronous interface provided by the view model. The async
+ * call [fetchWeatherInfo] and its completion [state] and [state] are separated.
  */
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
 

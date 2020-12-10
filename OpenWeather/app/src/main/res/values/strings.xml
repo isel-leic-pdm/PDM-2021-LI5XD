@@ -9,9 +9,12 @@
     <string name="label_max_temp">Max</string>
     <string name="label_min_temp">Min</string>
     <string name="label_wind">Wind</string>
-    <string name="text_default_temp">- - ºC</string>
-    <string name="text_temp_units">ºC</string>
+    <string name="text_default_temp">- -ºC</string>
+    <string name="text_temp_placeholder">%1$sºC</string>
+
     <string name="text_default_humidity" translatable="false">--%</string>
-    <string name="text_humidity_units" translatable="false">%</string>
+    <string name="text_humidity_placeholder">%1$s%%</string>
     <string name="text_default_wind" translatable="false">- - -</string>
+
+    <string name="text_wind_placeholder">%1$s m/s - %2$s</string>
 </resources>

@@ -1,7 +1,7 @@
 package edu.isel.pdm.memorymatrix.game.data
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import kotlin.random.Random
 
 /**

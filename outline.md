@@ -194,7 +194,17 @@ For reference:
 For reference:
 * [Lecture video](#03122020---networking-with-volley)
 
-### 11/12/2020 - Networking, continued (preview)
-* [HTTP communication with Retrofit](https://square.github.io/retrofit/)
-* Further considerations regarding Android application architecture
-  * [Android application architecture](https://developer.android.com/jetpack/guide), revisited
+### 10/12/2020 - Android application architecture, revisited
+* [Elements of Android application architecture, revisited](https://developer.android.com/jetpack/guide#overview)
+  * [LiveData, revisited](https://developer.android.com/topic/libraries/architecture/livedata#work_livedata)
+    * [Mediator](https://developer.android.com/reference/androidx/lifecycle/MediatorLiveData) 
+    * [Transformations](https://developer.android.com/reference/androidx/lifecycle/Transformations)
+* Considerations on software design (a personal view)
+  * Architectural constraints, design principles and best practices
+
+> "Se antes de cada ato nosso nos puséssemos a prever todas as consequências dele, a pensar nelas a sério, primeiro as imediatas, depois as prováveis, depois as possíveis, depois as imagináveis, não chegaríamos sequer a mover-nos de onde o primeiro pensamento nos tivesse feito parar."
+> 
+>  José Saramago in _Ensaio Sobre a Cegueira_
+
+For reference:
+* [Lecture video](#10122020---android-application-architecture-revisited)

@@ -11,7 +11,7 @@ import edu.isel.pdm.memorymatrix.game.data.MatrixPattern
 import edu.isel.pdm.memorymatrix.game.data.Position
 import edu.isel.pdm.memorymatrix.utils.confinedLazy
 import edu.isel.pdm.memorymatrix.utils.runDelayed
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 private const val SAVED_STATE_KEY = "MatrixViewModel.SavedState"
 
