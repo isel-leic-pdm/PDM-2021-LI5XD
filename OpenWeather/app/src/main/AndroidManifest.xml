@@ -15,7 +15,7 @@
         android:name=".OpenWeatherApplication">
         <activity android:name=".WeatherActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivityV2"
             android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
