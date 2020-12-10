@@ -26,7 +26,11 @@ const val WEATHER_EXTRA_KEY = "WeatherActivity.WeatherInfo.Extra"
 class WeatherActivityViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
-     * The last fetched image bitmap
+     * The last fetched image bitmap.
+     *
+     * Implementation note: be aware of the use of Result from kotlin's stdlib here
+     * See restrictions here:
+     * https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/result.md#encapsulate-successful-or-failed-function-execution
      */
     val imageBitmap: LiveData<Result<Bitmap>?> = MutableLiveData()
 

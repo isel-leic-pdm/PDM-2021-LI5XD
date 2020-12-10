@@ -23,34 +23,44 @@ class MainActivity : AppCompatActivity() {
     private val cityName: String
         get() = binding.city.text.toString().trim()
 
+    /**
+     * Displays the UI according to the screen's state
+     */
     private fun displayUI() {
         val state = viewModel.state.value
-        binding.fetchButton.isEnabled = state != State.IN_PROGRESS
-        binding.city.isEnabled = state != State.IN_PROGRESS
+        binding.fetchButton.isEnabled = state == State.IDLE
+        binding.city.isEnabled = state == State.IDLE
         if (state == State.IDLE)
             binding.city.text.clear()
     }
 
+    /**
+     * Handles the completion of the asynchronous operation for fetching the weather information
+     */
     private fun handleWeatherInfoCompletion(it: Result<WeatherInfo>?) {
-        if (it != null) {
-            if (it.isFailure)
-                displayError()
-            else
-                navigateToWeatherActivity()
-        }
-
+        if (viewModel.state.value == State.COMPLETE && it?.isSuccess == true)
+            navigateToWeatherActivity()
+        else
+            displayError()
     }
 
+    /**
+     * Displays an indication that the weather information could not be fetched
+     */
     private fun displayError() {
         Toast.makeText(
             this,
             resources.getString(R.string.error_msg_couldntget),
             Toast.LENGTH_LONG
         ).show()
-
     }
 
+    /**
+     * Navigates to the activity used to display the weather information, clearing the view model
+     * state in the process
+     */
     private fun navigateToWeatherActivity() {
+        viewModel.setToIdle()
         startActivity(Intent(this, WeatherActivity::class.java).apply {
             val info = viewModel.weatherInfo?.value?.getOrNull() ?: throw IllegalStateException()
             putExtra(WEATHER_EXTRA_KEY, info)
@@ -65,8 +75,7 @@ class MainActivity : AppCompatActivity() {
             displayUI()
         }
 
-        // TODO: Change implementation so that only one call to observe exists
-        viewModel.weatherInfo?.observe(this) {
+        viewModel.weatherInfo.observe(this) {
             handleWeatherInfoCompletion(it)
         }
 
@@ -80,10 +89,7 @@ class MainActivity : AppCompatActivity() {
                 displayUI()
             }
             else {
-                // TODO: Change implementation so that we can remove this call to observe
-                viewModel.fetchWeatherInfo(cityName).observe(this) {
-                    handleWeatherInfoCompletion(it)
-                }
+                viewModel.fetchWeatherInfo(cityName)
             }
         }
     }
