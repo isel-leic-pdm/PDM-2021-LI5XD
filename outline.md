@@ -192,7 +192,7 @@ For reference:
   * [Android application architecture](https://developer.android.com/jetpack/guide), revisited
 
 For reference:
-* [Lecture video](#03122020---networking-with-volley)
+* [Lecture video](https://www.youtube.com/watch?v=a1FunmUeyfc&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=13)
 
 ### 10/12/2020 - Android application architecture, revisited
 * [Elements of Android application architecture, revisited](https://developer.android.com/jetpack/guide#overview)
@@ -207,4 +207,6 @@ For reference:
 >  José Saramago in _Ensaio Sobre a Cegueira_
 
 For reference:
-* [Lecture video](#10122020---android-application-architecture-revisited)
+* [Lecture video - part 1](https://www.youtube.com/watch?v=2fore2Nh1yE&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=14)
+* [Lecture video - part 2](https://www.youtube.com/watch?v=EzXwgSWzQXo&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=15)
+
