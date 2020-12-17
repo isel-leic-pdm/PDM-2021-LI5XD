@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#008577</color>
+    <color name="color_primary_dark">#00574B</color>
+    <color name="color_accent">#D81B60</color>
+
+    <color name="list_item_background">#FFFFFF</color>
+    <color name="list_item_border">#edf0f6</color>
+    <color name="list_item_background_selected">#5EA1A3A3</color>
+    <color name="list_item_border_selected">#6F7070</color>
+</resources>

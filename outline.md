@@ -210,3 +210,14 @@ For reference:
 * [Lecture video - part 1](https://www.youtube.com/watch?v=2fore2Nh1yE&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=14)
 * [Lecture video - part 2](https://www.youtube.com/watch?v=EzXwgSWzQXo&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=15)
 
+### 16/12/2020 - Using Firebase
+* Firebase: backend as a service (introduction)
+  * [Firebase console](https://console.firebase.google.com/)
+* Firebase's Cloud Firestore (introduction)
+  * [Getting started](https://firebase.google.com/docs/firestore/quickstart)
+  * [Data model](https://firebase.google.com/docs/firestore/data-model)
+  * [Publish / Subscribe communication model](https://firebase.google.com/docs/firestore/query-data/listen)
+  
+For reference:
+* [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup)
+* [Lecture video](#16122020---using-firebase)

@@ -1,0 +1,59 @@
+<resources>
+    <!-- Application wide -->
+    <string name="app_name">TicTacToe</string>
+
+    <!-- Notifications -->
+    <string name="moves_channel_name">Moves updates</string>
+    <string name="moves_channel_description">Channel for moves\' updates notification</string>
+    <string name="ongoing_game_notification_title">Ongoing game</string>
+    <string name="ongoing_game_notification_text">Playing challenge \'%s\'</string>
+    <string name="move_made_notification_title">Move made</string>
+    <string name="move_made_notification_text">It\'s your turn</string>
+
+    <!-- Game screen -->
+    <string name="game_screen_title_local">Lets play TicTacToe</string>
+    <string name="game_screen_title_distributed_challenger_waiting">Waiting for contender</string>
+    <string name="game_screen_title_distributed_challenger_playing">Playing against contender</string>
+    <string name="game_screen_title_distributed_contender">Playing %s</string>
+    <string name="game_start_button_label">Start</string>
+    <string name="game_forfeit_button_label">Forfeit</string>
+    <string name="game_menu_about_label">About</string>
+    <string name="game_menu_challenges_label">Challenges</string>
+
+    <string name="game_initial_message">Press Start to begin play</string>
+    <string name="game_turn_message">Turn: %s</string>
+    <string name="game_turn_message_self">Turn: You\'re up</string>
+    <string name="game_turn_message_contender">Turn: Contender</string>
+    <string name="game_winner_message">The winner is %s</string>
+    <string name="game_winner_message_self">You WON!</string>
+    <string name="game_looser_message_self">You loose. Get a life!</string>
+    <string name="game_tied_message">No one won</string>
+
+
+    <!-- About screen -->
+    <string name="about_author_label">By</string>
+    <string name="about_author_name" translatable="false">Paulo Pereira</string>
+    <string name="about_author_linked_in" translatable="false">https://www.linkedin.com/in/palbp/</string>
+    <string name="about_author_photo_description">Photo of the author</string>
+    <string name="about_author_linked_in_description">LinkedIn logo</string>
+
+    <!-- Game list screen -->
+    <string name="list_screen_title">TicTacToe challenges</string>
+    <string name="list_create_challenge_button_label">New Challenge</string>
+    <string name="list_menu_update_label">Refresh</string>
+    <string name="error_getting_list">Could not fetch challenges list</string>
+    <string name="error_accepting_challenge">Could not accept challenge</string>
+
+    <!-- Create challenge screen -->
+    <string name="create_challenge_title">Create Challenge</string>
+    <string name="create_challenge_prompt_challenger_name">Name</string>
+    <string name="create_challenge_prompt_message">Message</string>
+    <string name="create_challenge_button_label">Post challenge</string>
+    <string name="create_challenge_button_label_in_short">Post it</string>
+    <string name="error_creating_challenge">Could not create challenge.</string>
+
+    <string name="accept_challenge_dialog_title">Accept %s\'s challenge?</string>
+    <string name="accept_challenge_dialog_ok">OK</string>
+    <string name="accept_challenge_dialog_cancel">Cancel</string>
+    <string name="loading">Loading...</string>
+</resources>
