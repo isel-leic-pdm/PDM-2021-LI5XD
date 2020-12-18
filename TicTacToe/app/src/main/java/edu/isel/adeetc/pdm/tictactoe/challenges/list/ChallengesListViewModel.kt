@@ -28,11 +28,6 @@ class ChallengesViewModel(app: Application) : AndroidViewModel(app) {
     val challenges: LiveData<List<ChallengeInfo>> = MutableLiveData()
 
     /**
-     * Contains information about the enrolment in a challenge.
-     */
-    val enrolmentResult: LiveData<Result<ChallengeInfo, Exception>> = MutableLiveData()
-
-    /**
      * Gets the challenges list by fetching them from the server. The operation's result is exposed
      * through [challenges]
      */
@@ -46,6 +41,11 @@ class ChallengesViewModel(app: Application) : AndroidViewModel(app) {
             }
         )
     }
+
+    /**
+     * Contains information about the enrolment in a challenge.
+     */
+    val enrolmentResult: LiveData<Result<ChallengeInfo, Exception>> = MutableLiveData()
 
     /**
      * Tries to accepts the given challenge. The result of the asynchronous operation is exposed

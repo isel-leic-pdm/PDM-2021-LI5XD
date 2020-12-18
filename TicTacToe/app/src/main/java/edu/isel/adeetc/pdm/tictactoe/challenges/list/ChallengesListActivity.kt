@@ -109,7 +109,6 @@ class ChallengesListActivity : AppCompatActivity() {
                 binding.challengesList.isEnabled = false
             }
         }
-        updateChallengesList()
     }
 
     /**
@@ -152,5 +151,10 @@ class ChallengesListActivity : AppCompatActivity() {
             }
             else -> super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        updateChallengesList()
     }
 }

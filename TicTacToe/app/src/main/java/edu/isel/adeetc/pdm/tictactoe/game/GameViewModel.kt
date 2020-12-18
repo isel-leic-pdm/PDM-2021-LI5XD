@@ -1,9 +1,11 @@
 package edu.isel.adeetc.pdm.tictactoe.game
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import edu.isel.adeetc.pdm.tictactoe.TAG
 import edu.isel.adeetc.pdm.tictactoe.TicTacToeApplication
 import edu.isel.adeetc.pdm.tictactoe.challenges.ChallengeInfo
 import edu.isel.adeetc.pdm.tictactoe.game.model.Game
@@ -19,14 +21,18 @@ class GameViewModel(
     val challengeInfo: ChallengeInfo
 ) : AndroidViewModel(app) {
 
-    init {
-        getApplication<TicTacToeApplication>().repository.subscribeTo(
+    private val subscription = getApplication<TicTacToeApplication>().repository.subscribeTo(
             challengeInfo.id,
             onSubscriptionError = { TODO() },
             onStateChanged = {
                 (gameState as MutableLiveData<Game>).value = it
             }
-        )
+    )
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.v(TAG, "GameViewModel.onCleared()")
+        subscription.remove()
     }
 
     private val app = getApplication<TicTacToeApplication>()
@@ -41,7 +47,9 @@ class GameViewModel(
             played = gameState.value?.makeMoveAt(x, y)
             app.repository.updateGameState(
                 gameState.value ?: throw IllegalStateException(),
-                challengeInfo
+                challengeInfo,
+                onSuccess = { (gameState as MutableLiveData<Game>).value = it },
+                onError = { TODO() }
             )
         }
         return played
@@ -54,7 +62,9 @@ class GameViewModel(
         gameState.value?.start(Player.P1)
         app.repository.updateGameState(
             gameState.value ?: throw IllegalStateException(),
-            challengeInfo
+            challengeInfo,
+            onSuccess = { (gameState as MutableLiveData<Game>).value = it },
+            onError = { TODO() }
         )
     }
 
@@ -66,7 +76,9 @@ class GameViewModel(
             gameState.value?.forfeit()
             app.repository.updateGameState(
                 gameState.value ?: throw IllegalStateException(),
-                challengeInfo
+                challengeInfo,
+                onSuccess = { (gameState as MutableLiveData<Game>).value = it },
+                onError = { TODO() }
             )
         }
     }

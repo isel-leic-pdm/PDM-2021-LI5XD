@@ -6,22 +6,25 @@ import kotlinx.parcelize.Parcelize
 private const val BOARD_SIDE = 3
 private const val MAX_MOVES = BOARD_SIDE * BOARD_SIDE
 
-private const val BOARD_FIELD = "contents"
-private const val MOVES_FIELD = "moveCount"
+
+/**
+ * External representation of the board moves.
+ */
+data class MovesDTO(val moves: List<Board.Move>)
 
 /**
  * The Tic-Tac-Toe viewModel board. It represents the ongoing game's state.
  */
 @Parcelize
-data class Board(private val board: Array<Array<Player?>>, private var moves: Int = 0) : Parcelable {
+class Board(private val moves: MutableList<Move> = mutableListOf()) : Parcelable {
 
-    constructor() : this(
-        arrayOf(
-            arrayOfNulls(BOARD_SIDE),
-            arrayOfNulls(BOARD_SIDE),
-            arrayOfNulls(BOARD_SIDE)
-        )
-    )
+    /**
+     * Creates an external representation of the board moves
+     */
+    fun toMovesDTO() = MovesDTO(moves)
+
+    @Parcelize
+    data class Move(val player: Player, val x: Int, val y: Int) : Parcelable
 
     /**
      * Gets the move, represented by the [Player] instance that made it, at the given position.
@@ -33,7 +36,7 @@ data class Board(private val board: Array<Array<Player?>>, private var moves: In
     operator fun get(x: Int, y: Int): Player? {
         require(x in 0 until BOARD_SIDE)
         require(y in 0 until BOARD_SIDE)
-        return board[x][y]
+        return moves.find { it.x == x && it.y == y }?.player
     }
 
     /**
@@ -41,32 +44,31 @@ data class Board(private val board: Array<Array<Player?>>, private var moves: In
      *
      * @param   [x] the horizontal coordinate in the interval [0..2]
      * @param   [y] the vertical coordinate in the interval [0..2]
-     * @param   [move] the [Player] instance that made the move
+     * @param   [player] the [Player] instance that made the move
      * @return  the current instance, for fluent use
      * @throws  [IllegalArgumentException] if the specified position is not valid
      * @throws  [IllegalStateException] if the specified position is already in use
      */
-    operator fun set(x: Int, y: Int, move: Player): Board {
+    operator fun set(x: Int, y: Int, player: Player): Board {
         require(x in 0 until BOARD_SIDE)
         require(y in 0 until BOARD_SIDE)
-        check(board[x][y] == null)
+        check(this[x, y] == null)
 
-        board[x][y] = move
-        moves += 1
+        moves.add(Move(player, x, y))
         return this
     }
 
     /**
-     * Gets the winner, or null if the viewModel is tied or not over yet
+     * Gets the winner, or null if the game is tied or not over yet
      */
     fun getWinner(): Player? {
 
         fun verify(startX: Int, startY: Int, dx: Int, dy: Int): Player? {
 
-            val candidateWinner = board[startX][startY] ?: return null
+            val candidateWinner = this[startX, startY] ?: return null
 
             for (i in 1 until BOARD_SIDE) {
-                if (board[startX + i * dx][startY + i * dy] != candidateWinner)
+                if (this[startX + i * dx, startY + i * dy] != candidateWinner)
                     return null
             }
 
@@ -95,18 +97,11 @@ data class Board(private val board: Array<Array<Player?>>, private var moves: In
                     dx = 0,
                     dy = 1
                 )
-                )
+        )
     }
 
     /**
      * Gets a boolean value indicating whether the viewModel is tied or not
      */
-    fun isTied() = moves == MAX_MOVES && getWinner() == null
-
-    /**
-     * Gets the number of moves already made.
-     */
-    val moveCount: Int
-        get() = moves
-
+    fun isTied() = moves.size == MAX_MOVES && getWinner() == null
 }

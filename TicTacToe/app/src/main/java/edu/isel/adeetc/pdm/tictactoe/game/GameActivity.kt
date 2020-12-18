@@ -45,6 +45,12 @@ class GameActivity : AppCompatActivity() {
         intent.getParcelableExtra<Player>(LOCAL_PLAYER_EXTRA) ?:
             throw IllegalArgumentException("Mandatory extra $LOCAL_PLAYER_EXTRA not present")
     }
+
+    private val turnPlayer: Player by lazy {
+        intent.getParcelableExtra<Player>(TURN_PLAYER_EXTRA) ?:
+        throw IllegalArgumentException("Mandatory extra $TURN_PLAYER_EXTRA not present")
+    }
+
     private val challengeInfo: ChallengeInfo by lazy {
         intent.getParcelableExtra<ChallengeInfo>(ACCEPTED_CHALLENGE_EXTRA) ?:
             throw IllegalArgumentException("Mandatory extra $ACCEPTED_CHALLENGE_EXTRA not present")
@@ -68,7 +74,8 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.v(TAG, "GameActivity.onCreate()")
-
+        Log.v(TAG, "Local player is $localPlayer")
+        Log.v(TAG, "Turn player is $turnPlayer")
         setContentView(binding.root)
         viewModel.gameState.observe(this) { updateUI() }
         binding.startButton.setOnClickListener { viewModel.start() }
@@ -92,6 +99,7 @@ class GameActivity : AppCompatActivity() {
      * Used to render the game view when the game has not been started yet
      */
     private fun renderNotStarted() {
+        Log.v(TAG, "renderNotStarted() with local $localPlayer and turn $turnPlayer")
 
         if (viewModel.localPlayer == Player.P2) {
             title = getString(R.string.game_screen_title_distributed_challenger_waiting)
@@ -114,17 +122,26 @@ class GameActivity : AppCompatActivity() {
      * Used to render the game view when the game is in progress
      */
     private fun renderStarted() {
-        val initialPlayer: Player? = intent.extras?.getParcelable(TURN_PLAYER_EXTRA)
-        if (initialPlayer == Player.P2)
-            title = getString(R.string.game_screen_title_distributed_challenger_playing)
-        if (viewModel.localPlayer == viewModel.gameState.value?.nextTurn) {
+        Log.v(TAG, "renderStarted() with local $localPlayer and turn $turnPlayer")
+        title = if (localPlayer == Player.P2)
+            getString(R.string.game_screen_title_distributed_challenger_playing)
+        else
+            getString(
+                R.string.game_screen_title_distributed_contender,
+                viewModel.challengeInfo.challengerName
+            )
+
+        if (localPlayer == viewModel.gameState.value?.nextTurn) {
             binding.messageBoard.text = getString(R.string.game_turn_message_self)
             binding.forfeitButton.isEnabled = true
         } else {
-            binding.messageBoard.text = getString(
-                R.string.game_turn_message,
-                viewModel.challengeInfo.challengerName
-            )
+            binding.messageBoard.text = if (localPlayer == Player.P1)
+                getString(
+                    R.string.game_turn_message,
+                    viewModel.challengeInfo.challengerName
+                )
+            else getString(R.string.game_turn_message_contender)
+
             binding.forfeitButton.isEnabled = false
         }
         binding.startButton.isEnabled = false
@@ -134,6 +151,7 @@ class GameActivity : AppCompatActivity() {
      * Used to render the game view when the game is in progress
      */
     private fun renderFinished() {
+        Log.v(TAG, "renderFinished() with local $localPlayer and turn $turnPlayer")
         binding.startButton.isEnabled = false
         binding.forfeitButton.isEnabled = false
         binding.messageBoard.text = when {
@@ -141,6 +159,8 @@ class GameActivity : AppCompatActivity() {
             viewModel.gameState.value?.theWinner == viewModel.localPlayer -> getString(R.string.game_winner_message_self)
             else -> getString(R.string.game_looser_message_self)
         }
+
+        // TODO: Schedule game deletion
     }
 
     /**

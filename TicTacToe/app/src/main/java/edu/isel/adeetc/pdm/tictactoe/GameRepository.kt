@@ -1,11 +1,16 @@
 package edu.isel.adeetc.pdm.tictactoe
 
 import android.util.Log
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.isel.adeetc.pdm.tictactoe.challenges.ChallengeInfo
+import edu.isel.adeetc.pdm.tictactoe.game.model.Board
 import edu.isel.adeetc.pdm.tictactoe.game.model.Game
+import edu.isel.adeetc.pdm.tictactoe.game.model.GameDTO
+import edu.isel.adeetc.pdm.tictactoe.game.model.toGame
 
 /**
  * The path of the Firestore collection that contains all the challenges
@@ -21,6 +26,8 @@ private const val CHALLENGER_NAME = "challengerName"
 private const val CHALLENGER_MESSAGE = "challengerMessage"
 
 private const val GAME_STATE_KEY = "game"
+private const val CHALLENGE_INFO_KEY = "challenge"
+
 
 /**
  * Extension function used to convert createdChallenge documents stored in the Firestore DB into
@@ -36,7 +43,7 @@ private fun QueryDocumentSnapshot.toChallengeInfo() =
 /**
  * The repository for the distributed Tic Tac Toe.
  */
-class Repository {
+class Repository(private val mapper: ObjectMapper) {
 
     /**
      * Fetches the list of open challenges from the backend
@@ -93,9 +100,9 @@ class Repository {
         challengeId: String,
         onSubscriptionError: (Exception) -> Unit,
         onStateChanged: (Game) -> Unit
-    ) {
+    ): ListenerRegistration {
 
-        Firebase.firestore
+        return Firebase.firestore
             .collection(GAMES_COLLECTION)
             .document(challengeId)
             .addSnapshotListener { snapshot, error ->
@@ -105,8 +112,11 @@ class Repository {
                 }
 
                 if (snapshot?.exists() == true) {
-                    val gameState = Game.fromString(snapshot.getString(GAME_STATE_KEY) ?: "")
-                    onStateChanged(gameState)
+                    val gameDTO = mapper.readValue(
+                        snapshot.get(GAME_STATE_KEY) as String,
+                        GameDTO::class.java
+                    )
+                    onStateChanged(gameDTO.toGame())
                 }
             }
     }
@@ -114,14 +124,22 @@ class Repository {
     /**
      * Updates the shared game state
      */
-    fun updateGameState(game: Game, challenge: ChallengeInfo) {
-        val gameStateBlob = game.toString()
-        val challengeBlob = challenge.toString()
+    fun updateGameState(
+        game: Game,
+        challenge: ChallengeInfo,
+        onSuccess: (Game) -> Unit,
+        onError: (Exception) -> Unit
+    ) {
+        val gameStateBlob = mapper.writeValueAsString(game.toGameDTO())
+        val challengeBlob = mapper.writeValueAsString(challenge)
+
         Firebase.firestore.collection(GAMES_COLLECTION)
             .document(challenge.id)
             .set(hashMapOf(
-                    "game" to gameStateBlob,
-                    "challenge" to challengeBlob
+                GAME_STATE_KEY to gameStateBlob,
+                CHALLENGE_INFO_KEY to challengeBlob
             ))
+            .addOnSuccessListener { onSuccess(game) }
+            .addOnFailureListener { onError(it) }
     }
 }
