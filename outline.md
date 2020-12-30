@@ -220,4 +220,4 @@ For reference:
   
 For reference:
 * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup)
-* [Lecture video](#16122020---using-firebase)
+* [Lecture video](https://www.youtube.com/watch?v=0pSwGNmX4aM&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=16)
