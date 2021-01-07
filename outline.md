@@ -187,7 +187,7 @@ For reference:
 * Accessing the communications network
   * [Required permissions](https://developer.android.com/training/basics/network-ops/connecting)
 * [HTTP communication with Volley](https://developer.android.com/training/volley)
-* Serialization and deserialization with Jackson
+  * Serialization and deserialization with Jackson
 * Further considerations regarding Android application architecture
   * [Android application architecture](https://developer.android.com/jetpack/guide), revisited
 
@@ -221,3 +221,26 @@ For reference:
 For reference:
 * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup)
 * [Lecture video](https://www.youtube.com/watch?v=0pSwGNmX4aM&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=16)
+
+### 04/01/2021 - Practical class
+Practical class dedicated to the development of the second part of the course's project (requirements are [here](assets/PDM-2021-1_Trab1.pdf), in Portuguese)
+
+### 07/01/2021 - Wrapping up
+* Computational resources' managment in Android ([documentation](https://developer.android.com/guide/components/activities/process-lifecycle))
+  * Consequences in application design
+  * [Foreground work (user facing) and background work](https://developer.android.com/guide/background)
+* [The WorkManager API](https://developex cvr.android.com/topic/libraries/architecture/workmanager)
+  * Purpose and Motivation
+  * Programming model and threading model
+    * Threading in [Worker](https://developer.android.com/topic/libraries/architecture/workmanager/advanced/worker)
+    * Threading in [ListenableWorker](https://developer.android.com/topic/libraries/architecture/workmanager/advanced/listenableworker)
+* A brief historic perspective of Android aplication development
+  * [Existing android components and their purpose](https://developer.android.com/guide/components/fundamentals)
+    * Activity, BroadcastReceiver, Service and ContentProvider 
+  * Classic Android application architecture
+    * Characterization and shortcomings
+    * Documentation on the gradual deprecation of the classic approach
+      * [Nougat](https://developer.android.com/about/versions/nougat/android-7.0-changes)
+      * [Oreo](https://developer.android.com/about/versions/oreo/background)
+      * [Pie](https://developer.android.com/about/versions/pie/android-9.0-changes-28#fg-svc)
+      * [Android 10](https://developer.android.com/about/versions/10/behavior-changes-all)
