@@ -1,6 +1,9 @@
 package edu.isel.adeetc.pdm.tictactoe.game
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.view.View
 import android.widget.TableRow
@@ -9,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.work.*
 import edu.isel.adeetc.pdm.tictactoe.R
 import edu.isel.adeetc.pdm.tictactoe.TAG
 import edu.isel.adeetc.pdm.tictactoe.challenges.ChallengeInfo
@@ -78,6 +80,8 @@ class GameActivity : AppCompatActivity() {
         viewModel.gameState.observe(this) { updateUI() }
         binding.startButton.setOnClickListener { viewModel.start() }
         binding.forfeitButton.setOnClickListener { viewModel.forfeit() }
+
+        stopService(buildServiceIntent())
     }
 
     /**
@@ -184,5 +188,38 @@ class GameActivity : AppCompatActivity() {
 
         val cell = view as CellView
         viewModel.makeMoveAt(cell.column, cell.row) ?: return
+    }
+
+    private fun buildServiceIntent(): Intent {
+        val nextTurn = viewModel.gameState.value?.nextTurn ?: turnPlayer
+        return Intent(this, GameStateListener::class.java).also {
+            val info: ChallengeInfo? = intent.extras?.getParcelable(ACCEPTED_CHALLENGE_EXTRA)
+            it.putExtra(ACCEPTED_CHALLENGE_EXTRA, info)
+                .putExtra(LOCAL_PLAYER_EXTRA, viewModel.localPlayer as Parcelable)
+                .putExtra(TURN_PLAYER_EXTRA, nextTurn as Parcelable)
+        }
+    }
+
+    /**
+     * Callback method that handles the activity becoming not visible to the user
+     */
+    override fun onStop() {
+        super.onStop()
+        Log.v(TAG, "GameActivity.onStop()")
+
+        if (!isFinishing && !isChangingConfigurations) {
+            val serviceIntent = buildServiceIntent()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) startForegroundService(serviceIntent)
+            else startService(serviceIntent)
+        }
+    }
+
+    /**
+     * Callback method that handles the activity becoming again visible to the user
+     */
+    override fun onRestart() {
+        super.onRestart()
+        Log.v(TAG, "GameActivity.onRestart()")
+        stopService(buildServiceIntent())
     }
 }

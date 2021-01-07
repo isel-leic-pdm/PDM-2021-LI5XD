@@ -229,7 +229,7 @@ Practical class dedicated to the development of the second part of the course's 
 * Computational resources' managment in Android ([documentation](https://developer.android.com/guide/components/activities/process-lifecycle))
   * Consequences in application design
   * [Foreground work (user facing) and background work](https://developer.android.com/guide/background)
-* [The WorkManager API](https://developex cvr.android.com/topic/libraries/architecture/workmanager)
+* [The WorkManager API](https://developer.android.com/topic/libraries/architecture/workmanager)
   * Purpose and Motivation
   * Programming model and threading model
     * Threading in [Worker](https://developer.android.com/topic/libraries/architecture/workmanager/advanced/worker)

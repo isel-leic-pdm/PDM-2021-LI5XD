@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.isel.adeetc.pdm.tictactoe">
 
-    <uses-permission
-        android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".TicTacToeApplication"
@@ -15,16 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <service
+            android:name=".game.GameStateListener"
+            android:enabled="true"
+            android:exported="false"></service>
 
         <activity
             android:name=".challenges.list.ChallengesListActivity"
             android:label="@string/list_screen_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".challenges.create.CreateChallengeActivity" />
         <activity android:name=".about.AboutActivity" />
         <activity android:name=".game.GameActivity" />
