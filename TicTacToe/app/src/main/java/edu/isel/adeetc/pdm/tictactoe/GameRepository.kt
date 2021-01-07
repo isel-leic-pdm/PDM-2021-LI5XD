@@ -7,7 +7,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.isel.adeetc.pdm.tictactoe.challenges.ChallengeInfo
-import edu.isel.adeetc.pdm.tictactoe.game.model.Board
 import edu.isel.adeetc.pdm.tictactoe.game.model.Game
 import edu.isel.adeetc.pdm.tictactoe.game.model.GameDTO
 import edu.isel.adeetc.pdm.tictactoe.game.model.toGame
@@ -140,6 +139,22 @@ class Repository(private val mapper: ObjectMapper) {
                 CHALLENGE_INFO_KEY to challengeBlob
             ))
             .addOnSuccessListener { onSuccess(game) }
+            .addOnFailureListener { onError(it) }
+    }
+
+    /**
+     * Deletes the shared game state for the given challenge.
+     */
+    fun deleteGame(
+        challengeId: String,
+        onSuccess: () -> Unit,
+        onError: (Exception) -> Unit
+    ) {
+
+        Firebase.firestore.collection(GAMES_COLLECTION)
+            .document(challengeId)
+            .delete()
+            .addOnSuccessListener { onSuccess() }
             .addOnFailureListener { onError(it) }
     }
 }

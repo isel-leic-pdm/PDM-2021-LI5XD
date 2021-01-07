@@ -1,9 +1,6 @@
 package edu.isel.adeetc.pdm.tictactoe.game
 
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import android.view.View
 import android.widget.TableRow
@@ -12,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.work.*
 import edu.isel.adeetc.pdm.tictactoe.R
 import edu.isel.adeetc.pdm.tictactoe.TAG
 import edu.isel.adeetc.pdm.tictactoe.challenges.ChallengeInfo
@@ -160,7 +158,7 @@ class GameActivity : AppCompatActivity() {
             else -> getString(R.string.game_looser_message_self)
         }
 
-        // TODO: Schedule game deletion
+        viewModel.cleanupGame()
     }
 
     /**

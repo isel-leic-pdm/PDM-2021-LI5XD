@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.work.*
 import edu.isel.adeetc.pdm.tictactoe.TAG
 import edu.isel.adeetc.pdm.tictactoe.TicTacToeApplication
 import edu.isel.adeetc.pdm.tictactoe.challenges.ChallengeInfo
@@ -37,6 +38,7 @@ class GameViewModel(
 
     private val app = getApplication<TicTacToeApplication>()
     val gameState: LiveData<Game> = MutableLiveData(Game())
+    private var cleanupScheduled = false
 
     /**
      * Makes a move at the given position.
@@ -80,6 +82,29 @@ class GameViewModel(
                 onSuccess = { (gameState as MutableLiveData<Game>).value = it },
                 onError = { TODO() }
             )
+        }
+    }
+
+    /**
+     * Cleans up the shared game information
+     */
+    fun cleanupGame() {
+        // Did we created the game? Has it already been scheduled?
+        if (!cleanupScheduled && localPlayer == Player.P2) {
+
+            cleanupScheduled = true
+            val challengeID = challengeInfo.id
+            val cleanupJob = OneTimeWorkRequestBuilder<SynchronousGameStateCleanup>()
+                .setInputData(Data.Builder().putString(CHALLENGE_ID_KEY, challengeID).build())
+                .setConstraints(
+                    Constraints.Builder()
+                        .setRequiredNetworkType(NetworkType.UNMETERED)
+                        .setRequiresBatteryNotLow(true)
+                        .build()
+                )
+                .build()
+
+            WorkManager.getInstance(app).enqueue(cleanupJob)
         }
     }
 }
