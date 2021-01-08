@@ -79,7 +79,7 @@ class GameStateListener : Service() {
     /**
      * Callback method executed whenever an intent is sent to the service
      */
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         Log.v(TAG, "GameStateListener.onStartCommand()")
 
         initializeFromIntent(intent)

@@ -38,6 +38,7 @@ For reference:
   * [TilePanel library](assets/Tiles.zip), by [Pedro Pereira](https://www.linkedin.com/in/palexpereira/)
   * [Lecture video]([#15102020---building-android-applications](https://www.youtube.com/watch?v=oFFLaQBo9uM&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=3))
 
+## Week 3
 ### 19/10/2020 - Building a UI
 * Goal: Build a replica of the [Memory Matrix game](https://www.lumosity.com/en/brain-games/memory-matrix/)
 * Building a UI
@@ -63,6 +64,7 @@ For reference:
 For reference:
   * [Lecture video](https://www.youtube.com/watch?v=fp-JUis6peo&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=5)
 
+## Week 4
 ### 26/10/2020 - Building a UI, continued
 * Goal: Build a replica of the [Memory Matrix game](https://www.lumosity.com/en/brain-games/memory-matrix/)
 * Building a UI, continued
@@ -77,6 +79,7 @@ For reference:
 For reference:
   * [Lecture video](https://www.youtube.com/watch?v=XK_VSVwkFuA&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=6)
 
+## Week 5
 ### 02/11/2020 - Presentation state (UI state)
  * Activity lifecycle, revisited
    * Activity recreation due to configuration changes
@@ -111,6 +114,7 @@ For reference:
   * [ADB documentation](https://developer.android.com/studio/command-line/adb#shellcommands)
     * [Activity Manager](https://developer.android.com/studio/command-line/adb#am)
 
+## Week 6
 ### 09/11/2020 - Practical class
 Practical class dedicated to the development of the first part of the course's project (requirements are [here](assets/PDM-2021-1_Trab1.pdf), in Portuguese)
 
@@ -133,6 +137,7 @@ For reference:
   * [Menus](https://developer.android.com/guide/topics/ui/menus)
   * [Menu resource](https://developer.android.com/guide/topics/resources/menu-resource)
 
+## Week 7
 ### 16/11/2020 - Building Android applications, continued
 * Elements of [Android application architecture](https://developer.android.com/jetpack/guide), continued
    * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
@@ -153,6 +158,7 @@ For reference:
 ### 19/11/2020 - Practical class
 Practical class dedicated to the development of the first part of the course's project (requirements are [here](assets/PDM-2021-1_Trab1.pdf), in Portuguese)
 
+## Week 8
 ### 23/11/2020 - Building Android applications, continued
 * Persisting application state
   * In a key-value store
@@ -183,6 +189,7 @@ For reference:
 For reference:
 * [Lecture video](https://www.youtube.com/watch?v=XkIZXpsvUtM&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=12)
 
+## Week 9
 ### 03/12/2020 - Networking (with Volley)
 * Accessing the communications network
   * [Required permissions](https://developer.android.com/training/basics/network-ops/connecting)
@@ -194,6 +201,7 @@ For reference:
 For reference:
 * [Lecture video](https://www.youtube.com/watch?v=a1FunmUeyfc&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=13)
 
+## Week 10
 ### 10/12/2020 - Android application architecture, revisited
 * [Elements of Android application architecture, revisited](https://developer.android.com/jetpack/guide#overview)
   * [LiveData, revisited](https://developer.android.com/topic/libraries/architecture/livedata#work_livedata)
@@ -210,7 +218,8 @@ For reference:
 * [Lecture video - part 1](https://www.youtube.com/watch?v=2fore2Nh1yE&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=14)
 * [Lecture video - part 2](https://www.youtube.com/watch?v=EzXwgSWzQXo&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=15)
 
-### 16/12/2020 - Using Firebase
+## Week 11
+### 17/12/2020 - Using Firebase
 * Firebase: backend as a service (introduction)
   * [Firebase console](https://console.firebase.google.com/)
 * Firebase's Cloud Firestore (introduction)
@@ -222,6 +231,9 @@ For reference:
 * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup)
 * [Lecture video](https://www.youtube.com/watch?v=0pSwGNmX4aM&list=PL8XxoCaL3dBgFivHBJ0WXiAjNCKq3pu2w&index=16)
 
+### Christmas break
+
+## Week 12
 ### 04/01/2021 - Practical class
 Practical class dedicated to the development of the second part of the course's project (requirements are [here](assets/PDM-2021-1_Trab1.pdf), in Portuguese)
 

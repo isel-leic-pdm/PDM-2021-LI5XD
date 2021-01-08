@@ -94,7 +94,7 @@ class GameViewModel(
 
             cleanupScheduled = true
             val challengeID = challengeInfo.id
-            val cleanupJob = OneTimeWorkRequestBuilder<SynchronousGameStateCleanup>()
+            val cleanupJob = OneTimeWorkRequestBuilder<AsyncGameStateCleanup>()
                 .setInputData(Data.Builder().putString(CHALLENGE_ID_KEY, challengeID).build())
                 .setConstraints(
                     Constraints.Builder()

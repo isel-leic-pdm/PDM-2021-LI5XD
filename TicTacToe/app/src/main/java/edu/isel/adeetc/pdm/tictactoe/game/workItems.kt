@@ -36,11 +36,11 @@ class SynchronousGameStateCleanup(
 
         (applicationContext as TicTacToeApplication).repository.deleteGame(
             challengeId,
-            {
+            onSuccess = {
                 logWithThreadInfo("Cleanup of $challengeId succeeded")
                 done.countDown()
             },
-            {
+            onError = {
                 logWithThreadInfo("Cleanup of $challengeId failed")
                 error = it
                 done.countDown()
